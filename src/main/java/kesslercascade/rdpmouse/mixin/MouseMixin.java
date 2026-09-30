@@ -42,10 +42,8 @@ public abstract class MouseMixin {
                 RDPMouseState.lastX = x;
                 RDPMouseState.lastY = y;
 
-                int[] w = new int[1], h = new int[1];
-                GLFW.glfwGetWindowSize(win, w, h);
-                int winW = w[0];
-                int winH = h[0];
+                int winW = this.client.getWindow().getWidth();
+                int winH = this.client.getWindow().getHeight();
 
                 if (winW > 0 && winH > 0) {
                     double maxDelta = Math.max(100.0, Math.min(winW, winH) / 6.0);
@@ -82,10 +80,10 @@ public abstract class MouseMixin {
                 GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_HIDDEN);
                 RDPMouseCursor.clipCursor(window);
 
-                int[] w = new int[1], h = new int[1];
-                GLFW.glfwGetWindowSize(window, w, h);
-                if (w[0] > 0 && h[0] > 0) {
-                    GLFW.glfwSetCursorPos(window, w[0] / 2.0, h[0] / 2.0);
+                int winW = this.client.getWindow().getWidth();
+                int winH = this.client.getWindow().getHeight();
+                if (winW > 0 && winH > 0) {
+                    GLFW.glfwSetCursorPos(window, winW / 2.0, winH / 2.0);
                 }
             }
         }
