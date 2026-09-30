@@ -8,7 +8,7 @@
 ![ModMenu](https://img.shields.io/badge/ModMenu-Supported-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Port and update of the **RDPMouse** mod for **Minecraft 1.21.4 (Fabric)** by **byMr712**.
+Port and update of the **RDPMouse** mod for **Minecraft 1.21.4 (Fabric)**.
 
 Original Developer: [KesslerCascade/RDPMouse](https://github.com/KesslerCascade/RDPMouse).
 
@@ -51,7 +51,6 @@ All key bindings can be configured in: *Options -> Controls -> Key Binds -> RDP 
   - Added Russian (`ru_ru.json`) and English (`en_us.json`) translations.
 - **Build Convenience**:
   - Added `build.bat` helper script for quick builds.
-  - Configured automatic copying of compiled jar to the launcher instance mods folder.
 
 ---
 
@@ -59,7 +58,6 @@ All key bindings can be configured in: *Options -> Controls -> Key Binds -> RDP 
 
 1. Download the latest release from [GitHub Releases](https://github.com/byMr712/RDPMouse-1.21.4-MinecraftMod/releases).
 2. Requires:
-   - [Fabric Loader](https://fabricmc.net/) (Minecraft 1.21.4)
    - [Fabric API](https://modrinth.com/mod/fabric-api)
 3. Place the `.jar` file into your `mods` folder.
 4. Launch the game.

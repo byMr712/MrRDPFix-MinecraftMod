@@ -8,7 +8,7 @@
 ![ModMenu](https://img.shields.io/badge/ModMenu-Supported-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Порт и обновление мода **RDPMouse** для **Minecraft 1.21.4 (Fabric)** от **byMr712**.
+Порт и обновление мода **RDPMouse** для **Minecraft 1.21.4 (Fabric)**.
 
 Оригинальный разработчик: [KesslerCascade/RDPMouse](https://github.com/KesslerCascade/RDPMouse).
 
@@ -51,7 +51,6 @@ Minecraft по умолчанию использует прямое относи
   - Добавлены русская (`ru_ru.json`) и английская (`en_us.json`) локализации.
 - **Удобство сборки**:
   - Добавлен скрипт `build.bat` для быстрой компиляции.
-  - Настроено автоматическое копирование собранного мода в папку инстанса лаунчера.
 
 ---
 
@@ -59,7 +58,6 @@ Minecraft по умолчанию использует прямое относи
 
 1. Скачайте последнюю версию мода со страницы [GitHub Releases](https://github.com/byMr712/RDPMouse-1.21.4-MinecraftMod/releases).
 2. Требуются:
-   - [Fabric Loader](https://fabricmc.net/) (Minecraft 1.21.4)
    - [Fabric API](https://modrinth.com/mod/fabric-api)
 3. Поместите `.jar` файл в папку `mods`.
 4. Запустите игру.
