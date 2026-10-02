@@ -1,5 +1,6 @@
 package kesslercascade.rdpmouse;
 
+import kesslercascade.rdpmouse.config.RDPMouseConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -67,6 +68,7 @@ public final class RDPMouseClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         RDPMouse.init();
+        RDPMouseConfig.load();
         KeyBindingHelper.registerKeyBinding(TOGGLE_KEY);
         KeyBindingHelper.registerKeyBinding(FREE_MOUSE_KEY);
         KeyBindingHelper.registerKeyBinding(PAN_LEFT);
@@ -76,24 +78,26 @@ public final class RDPMouseClient implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(this::onClientTick);
     }
 
-    private static double panSpeed(int ticks) {
-        return Math.min(2.0 + ticks * 0.5, 25.0);
-    }
+    public static void applyMode(MinecraftClient mc, boolean enabled) {
+        RDPMouseState.enabled = enabled;
+        RDPMouseState.reset();
 
-    public void onClientTick(MinecraftClient mc) {
-        // Toggle
-        while (TOGGLE_KEY.wasPressed()) {
-            RDPMouseState.enabled = !RDPMouseState.enabled;
-            RDPMouseState.reset();
-
+        if (mc != null && mc.getWindow() != null) {
             long window = mc.getWindow().getHandle();
             if (mc.mouse.isCursorLocked() && window != 0L) {
-                if (RDPMouseState.enabled) {
+                if (enabled) {
                     if (InputUtil.isRawMouseMotionSupported()) {
                         GLFW.glfwSetInputMode(window, GLFW.GLFW_RAW_MOUSE_MOTION, GLFW.GLFW_FALSE);
                     }
                     GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_HIDDEN);
                     RDPMouseCursor.clipCursor(window);
+
+                    int winW = mc.getWindow().getWidth();
+                    int winH = mc.getWindow().getHeight();
+                    if (winW > 0 && winH > 0) {
+                        RDPMouseState.justRecenter = true;
+                        GLFW.glfwSetCursorPos(window, winW / 2.0, winH / 2.0);
+                    }
                 } else {
                     if (InputUtil.isRawMouseMotionSupported() && mc.options.getRawMouseInput().getValue()) {
                         GLFW.glfwSetInputMode(window, GLFW.GLFW_RAW_MOUSE_MOTION, GLFW.GLFW_TRUE);
@@ -102,9 +106,23 @@ public final class RDPMouseClient implements ClientModInitializer {
                     RDPMouseCursor.releaseClip();
                 }
             }
+        }
+    }
+
+    private static double panSpeed(int ticks) {
+        return Math.min(2.0 + ticks * 0.5, 25.0);
+    }
+
+    public void onClientTick(MinecraftClient mc) {
+        // Toggle
+        while (TOGGLE_KEY.wasPressed()) {
+            boolean newState = !RDPMouseState.enabled;
+            RDPMouseConfig.getInstance().rdpModeEnabled = newState;
+            RDPMouseConfig.save();
+            applyMode(mc, newState);
 
             if (mc.player != null) {
-                String key = RDPMouseState.enabled ? "rdpmouse.status.on" : "rdpmouse.status.off";
+                String key = newState ? "rdpmouse.status.on" : "rdpmouse.status.off";
                 mc.player.sendMessage(Text.translatable(key), true);
             }
         }

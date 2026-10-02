@@ -4,6 +4,10 @@
   "rdpmouse.status.on": "Режим RDP: Включен",
   "rdpmouse.status.off": "Режим RDP: Выключен",
 
+  "rdpmouse.config.title": "Настройки RDPMouse",
+  "rdpmouse.config.rdp_mode": "Режим RDP",
+  "rdpmouse.config.hint": "Переключение режима управления мышью RDP (Горячая клавиша: F8)",
+
   "key.rdpmouse.toggle": "Переключить режим RDP",
   "key.rdpmouse.freemouse": "Освободить мышь (удерживать)",
   "key.rdpmouse.pan_left": "Поворот камеры влево",

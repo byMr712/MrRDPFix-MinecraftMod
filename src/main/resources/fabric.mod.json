@@ -13,6 +13,9 @@
   "entrypoints": {
     "client": [
       "kesslercascade.rdpmouse.RDPMouseClient"
+    ],
+    "modmenu": [
+      "kesslercascade.rdpmouse.config.RDPMouseModMenu"
     ]
   },
   "mixins": [

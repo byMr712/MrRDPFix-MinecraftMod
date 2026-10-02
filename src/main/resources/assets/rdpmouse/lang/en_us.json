@@ -1,8 +1,12 @@
 {
   "key.category.rdpmouse": "RDP Mouse",
 
-  "rdpmouse.status.on": "RDP Mode: On",
-  "rdpmouse.status.off": "RDP Mode: Off",
+  "rdpmouse.status.on": "RDP Mode: Enabled",
+  "rdpmouse.status.off": "RDP Mode: Disabled",
+
+  "rdpmouse.config.title": "RDPMouse Settings",
+  "rdpmouse.config.rdp_mode": "RDP Mode",
+  "rdpmouse.config.hint": "Toggle RDP mouse look mode (Hotkey: F8)",
 
   "key.rdpmouse.toggle": "Toggle RDP Mode",
   "key.rdpmouse.freemouse": "Free Mouse (Hold)",

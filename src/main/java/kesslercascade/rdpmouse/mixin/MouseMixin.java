@@ -24,14 +24,24 @@ public abstract class MouseMixin {
     @Shadow private boolean cursorLocked;
 
     @Unique private GLFWCursorPosCallback rdpmouse$vanillaCallback;
-    @Unique private long rdpmouse$window;
 
     @Inject(method = "setup", at = @At("RETURN"))
     private void rdpmouse$onSetup(long window, CallbackInfo ci) {
-        rdpmouse$window = window;
         rdpmouse$vanillaCallback = GLFW.glfwSetCursorPosCallback(window, (win, x, y) -> {
             if (RDPMouseState.enabled && cursorLocked) {
+                int winW = this.client.getWindow().getWidth();
+                int winH = this.client.getWindow().getHeight();
+
+                if (winW <= 0 || winH <= 0) return;
+
                 if (RDPMouseState.lastX == RDPMouseState.UNSET) {
+                    RDPMouseState.lastX = x;
+                    RDPMouseState.lastY = y;
+                    return;
+                }
+
+                if (RDPMouseState.justRecenter) {
+                    RDPMouseState.justRecenter = false;
                     RDPMouseState.lastX = x;
                     RDPMouseState.lastY = y;
                     return;
@@ -42,25 +52,21 @@ public abstract class MouseMixin {
                 RDPMouseState.lastX = x;
                 RDPMouseState.lastY = y;
 
-                int winW = this.client.getWindow().getWidth();
-                int winH = this.client.getWindow().getHeight();
+                // Skip teleport delta jumps when recentering
+                if (Math.abs(dx) > winW * 0.25 || Math.abs(dy) > winH * 0.25) {
+                    return;
+                }
 
-                if (winW > 0 && winH > 0) {
-                    double maxDelta = Math.max(100.0, Math.min(winW, winH) / 6.0);
+                cursorDeltaX += dx;
+                cursorDeltaY += dy;
 
-                    // Accumulate movement if it's within normal physical delta threshold
-                    if (Math.abs(dx) < maxDelta && Math.abs(dy) < maxDelta) {
-                        cursorDeltaX += dx;
-                        cursorDeltaY += dy;
-                    }
+                // Seamlessly recenter cursor when it approaches window boundaries
+                int marginX = Math.max(20, (int) (winW * 0.15));
+                int marginY = Math.max(20, (int) (winH * 0.15));
 
-                    // Seamlessly recenter cursor when it approaches window boundaries
-                    int marginX = (int) (winW * 0.25);
-                    int marginY = (int) (winH * 0.25);
-
-                    if (x < marginX || x > winW - marginX || y < marginY || y > winH - marginY) {
-                        GLFW.glfwSetCursorPos(win, winW / 2.0, winH / 2.0);
-                    }
+                if (x < marginX || x > winW - marginX || y < marginY || y > winH - marginY) {
+                    RDPMouseState.justRecenter = true;
+                    GLFW.glfwSetCursorPos(win, winW / 2.0, winH / 2.0);
                 }
             } else if (rdpmouse$vanillaCallback != null) {
                 rdpmouse$vanillaCallback.invoke(win, x, y);
@@ -83,6 +89,7 @@ public abstract class MouseMixin {
                 int winW = this.client.getWindow().getWidth();
                 int winH = this.client.getWindow().getHeight();
                 if (winW > 0 && winH > 0) {
+                    RDPMouseState.justRecenter = true;
                     GLFW.glfwSetCursorPos(window, winW / 2.0, winH / 2.0);
                 }
             }
