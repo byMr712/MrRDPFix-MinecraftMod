@@ -56,7 +56,7 @@ All key bindings can be configured in: *Options -> Controls -> Key Binds -> RDP 
 
 ## Installation
 
-1. Download the latest release from [GitHub Releases](https://github.com/byMr712/RDPMouse-1.21.4-MinecraftMod/releases).
+1. Download the latest release from [GitHub Releases](https://github.com/byMr712/RDPMouse-MinecraftMod/releases).
 2. Requires:
    - [Fabric API](https://modrinth.com/mod/fabric-api)
 3. Place the `.jar` file into your `mods` folder.
