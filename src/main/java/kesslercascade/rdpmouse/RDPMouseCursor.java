@@ -1,6 +1,7 @@
 package kesslercascade.rdpmouse;
 
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWImage;
 import org.lwjgl.system.JNI;
 import org.lwjgl.system.Library;
 import org.lwjgl.system.MemoryStack;
@@ -8,10 +9,13 @@ import org.lwjgl.system.MemoryUtil;
 import org.lwjgl.system.Platform;
 import org.lwjgl.system.SharedLibrary;
 
+import java.nio.ByteBuffer;
+
 public final class RDPMouseCursor {
     private RDPMouseCursor() {}
 
     private static final long CLIP_CURSOR;
+    private static long transparentCursor = 0L;
 
     static {
         long clip = 0L;
@@ -26,6 +30,28 @@ public final class RDPMouseCursor {
         CLIP_CURSOR = clip;
         if (clip != 0L) {
             Runtime.getRuntime().addShutdownHook(new Thread(RDPMouseCursor::releaseClip, "RDPMouse-ReleaseClip"));
+        }
+    }
+
+    public static void applyCursor(long window) {
+        if (transparentCursor == 0L) {
+            try (MemoryStack stack = MemoryStack.stackPush()) {
+                GLFWImage image = GLFWImage.malloc(stack);
+                ByteBuffer pixels = stack.calloc(4 * 4 * 4); // 4x4 RGBA transparent pixels
+                image.set(4, 4, pixels);
+                transparentCursor = GLFW.glfwCreateCursor(image, 0, 0);
+            } catch (Throwable t) {
+                RDPMouse.LOGGER.warn("RDPMouse: could not create transparent cursor", t);
+            }
+        }
+        if (transparentCursor != 0L && window != 0L) {
+            GLFW.glfwSetCursor(window, transparentCursor);
+        }
+    }
+
+    public static void releaseCursor(long window) {
+        if (window != 0L) {
+            GLFW.glfwSetCursor(window, 0L);
         }
     }
 

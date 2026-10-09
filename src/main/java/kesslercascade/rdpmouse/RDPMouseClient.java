@@ -90,6 +90,7 @@ public final class RDPMouseClient implements ClientModInitializer {
                         GLFW.glfwSetInputMode(window, GLFW.GLFW_RAW_MOUSE_MOTION, GLFW.GLFW_FALSE);
                     }
                     GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_HIDDEN);
+                    RDPMouseCursor.applyCursor(window);
                     RDPMouseCursor.clipCursor(window);
 
                     int winW = mc.getWindow().getWidth();
@@ -103,6 +104,7 @@ public final class RDPMouseClient implements ClientModInitializer {
                         GLFW.glfwSetInputMode(window, GLFW.GLFW_RAW_MOUSE_MOTION, GLFW.GLFW_TRUE);
                     }
                     GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
+                    RDPMouseCursor.releaseCursor(window);
                     RDPMouseCursor.releaseClip();
                 }
             }
