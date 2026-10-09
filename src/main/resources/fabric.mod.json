@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "rdpmouse",
   "version": "${version}",
-  "name": "RDPMouse",
+  "name": "[MR] RDP Mouse",
   "description": "Fixes mouse look when playing over RDP (Remote Desktop Protocol), and allows camera rotation with the keyboard.",
   "license": "MIT",
   "environment": "client",
@@ -11,8 +11,8 @@
     "byMr712"
   ],
   "contact": {
-    "homepage": "https://github.com/byMr712/RDPMouse-MinecraftMod",
-    "sources": "https://github.com/byMr712/RDPMouse-MinecraftMod"
+    "homepage": "https://github.com/byMr712/MrRDPFix-MinecraftMod",
+    "sources": "https://github.com/byMr712/MrRDPFix-MinecraftMod"
   },
   "entrypoints": {
     "client": [
