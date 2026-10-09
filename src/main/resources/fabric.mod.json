@@ -10,6 +10,10 @@
     "KesslerCascade",
     "byMr712"
   ],
+  "contact": {
+    "homepage": "https://github.com/byMr712/RDPMouse-MinecraftMod",
+    "sources": "https://github.com/byMr712/RDPMouse-MinecraftMod"
+  },
   "entrypoints": {
     "client": [
       "kesslercascade.rdpmouse.RDPMouseClient"
