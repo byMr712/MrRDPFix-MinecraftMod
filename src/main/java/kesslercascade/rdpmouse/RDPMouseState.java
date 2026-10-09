@@ -4,6 +4,7 @@ public final class RDPMouseState {
     private RDPMouseState() {}
 
     public static volatile boolean enabled = true;
+    public static volatile double sensitivityMultiplier = 1.75;
 
     public static final double UNSET = Double.MIN_VALUE;
 

@@ -6,6 +6,7 @@
 
   "rdpmouse.config.title": "Настройки RDPMouse",
   "rdpmouse.config.rdp_mode": "Режим RDP",
+  "rdpmouse.config.sensitivity_boost": "Увеличение чувствительности мыши: %d%%",
   "rdpmouse.config.hint": "Переключение режима управления мышью RDP (Горячая клавиша: F8)",
 
   "key.rdpmouse.toggle": "Переключить режим RDP",
