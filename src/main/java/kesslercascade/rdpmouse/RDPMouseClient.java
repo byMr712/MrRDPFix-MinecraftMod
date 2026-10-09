@@ -8,13 +8,15 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 
 public final class RDPMouseClient implements ClientModInitializer {
 
     public static final RDPMouseClient INSTANCE = new RDPMouseClient();
 
-    public static final String RDPMOUSE_CATEGORY = "key.category.rdpmouse";
+    public static final KeyBinding.Category RDPMOUSE_CATEGORY =
+            KeyBinding.Category.create(Identifier.of("rdpmouse", "category"));
 
     public static final KeyBinding TOGGLE_KEY = new KeyBinding(
             "key.rdpmouse.toggle",
