@@ -8,7 +8,7 @@
 ![ModMenu](https://img.shields.io/badge/ModMenu-Supported-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Port and update of the **MrRdpFix** ([MR] RDP Mouse) mod for **Minecraft 1.21.4 (Fabric)**.
+Port and update of the **MrRdpFix** ([MR] RDP Fix) mod for **Minecraft 1.21.4 (Fabric)**.
 
 Original Developer: [KesslerCascade/RDPMouse](https://github.com/KesslerCascade/RDPMouse).
 
