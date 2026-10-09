@@ -5,6 +5,7 @@ import kesslercascade.rdpmouse.RDPMouseState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
 import net.minecraft.client.util.InputUtil;
+
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWCursorPosCallback;
 import org.spongepowered.asm.mixin.Final;
@@ -34,6 +35,9 @@ public abstract class MouseMixin {
 
                 if (winW <= 0 || winH <= 0) return;
 
+                double centerX = winW / 2.0;
+                double centerY = winH / 2.0;
+
                 if (RDPMouseState.lastX == RDPMouseState.UNSET) {
                     RDPMouseState.lastX = x;
                     RDPMouseState.lastY = y;
@@ -41,9 +45,8 @@ public abstract class MouseMixin {
                 }
 
                 if (RDPMouseState.justRecenter) {
-                    double distSq = Math.pow(x - RDPMouseState.recenterTargetX, 2) + Math.pow(y - RDPMouseState.recenterTargetY, 2);
-                    double threshold = Math.max(16.0, winW * 0.05);
-                    if (distSq <= threshold * threshold) {
+                    double distToTarget = Math.hypot(x - RDPMouseState.recenterTargetX, y - RDPMouseState.recenterTargetY);
+                    if (distToTarget <= 6.0) {
                         RDPMouseState.justRecenter = false;
                         RDPMouseState.lastX = x;
                         RDPMouseState.lastY = y;
@@ -64,13 +67,9 @@ public abstract class MouseMixin {
                 cursorDeltaX += dx * RDPMouseState.sensitivityMultiplier;
                 cursorDeltaY += dy * RDPMouseState.sensitivityMultiplier;
 
-                // Seamlessly recenter cursor when it approaches window boundaries
-                int marginX = Math.max(20, (int) (winW * 0.15));
-                int marginY = Math.max(20, (int) (winH * 0.15));
-
-                if (x < marginX || x > winW - marginX || y < marginY || y > winH - marginY) {
-                    double centerX = winW / 2.0;
-                    double centerY = winH / 2.0;
+                // Keep mouse cursor tightly pinned around the crosshair in the center
+                double maxOffset = 12.0;
+                if (Math.abs(x - centerX) > maxOffset || Math.abs(y - centerY) > maxOffset) {
                     RDPMouseState.justRecenter = true;
                     RDPMouseState.recenterTargetX = centerX;
                     RDPMouseState.recenterTargetY = centerY;
@@ -92,6 +91,7 @@ public abstract class MouseMixin {
                     GLFW.glfwSetInputMode(window, GLFW.GLFW_RAW_MOUSE_MOTION, GLFW.GLFW_FALSE);
                 }
                 GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_HIDDEN);
+                RDPMouseCursor.applyCursor(window);
                 RDPMouseCursor.clipCursor(window);
 
                 int winW = this.client.getWindow().getWidth();
@@ -114,6 +114,7 @@ public abstract class MouseMixin {
         RDPMouseState.reset();
         long window = this.client.getWindow().getHandle();
         if (window != 0L && RDPMouseState.enabled) {
+            RDPMouseCursor.releaseCursor(window);
             RDPMouseCursor.releaseClip();
         }
     }
