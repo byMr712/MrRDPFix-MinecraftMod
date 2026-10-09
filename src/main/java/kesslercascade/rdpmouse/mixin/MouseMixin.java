@@ -61,8 +61,8 @@ public abstract class MouseMixin {
                     return;
                 }
 
-                cursorDeltaX += dx;
-                cursorDeltaY += dy;
+                cursorDeltaX += dx * RDPMouseState.sensitivityMultiplier;
+                cursorDeltaY += dy * RDPMouseState.sensitivityMultiplier;
 
                 // Seamlessly recenter cursor when it approaches window boundaries
                 int marginX = Math.max(20, (int) (winW * 0.15));
