@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "rdpmouse",
   "version": "${version}",
-  "name": "[MR] RDP Mouse",
+  "name": "[MR] RDP Fix",
   "description": "Fixes mouse look when playing over RDP (Remote Desktop Protocol), and allows camera rotation with the keyboard.",
   "license": "MIT",
   "environment": "client",
