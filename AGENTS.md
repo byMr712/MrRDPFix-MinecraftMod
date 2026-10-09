@@ -5,7 +5,7 @@
 - **Display Name in Mod Menu:** `[MR] RDP Fix`
 - **Target Minecraft Version:** 1.21.11
 - **Loader:** Fabric Loader (>=0.16.0)
-- **Mapping Stack:** Yarn ``
+- **Mapping Stack:** Yarn `1.21.11+build.6:v2`
 - **Fabric API:** `0.141.6+1.21.11`
 - **Mod Menu Version:** `13.0.1`
 - **Java Requirement:** Java 21 LTS
@@ -94,7 +94,7 @@ MrRdpFix replaces raw relative mouse movement with absolute cursor position trac
 ## 5. Build & Development Instructions
 - Prerequisites: Java 21 LTS installed.
 - To compile and build:
-  ``bash
+  ```bash
   ./gradlew build
-  ``
+  ```
 - The resulting jar is saved to `build/libs/MrRdpFix-Fabric-1.21.11-byMr712-v1.0.jar`.
