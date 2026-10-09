@@ -121,10 +121,20 @@ public final class RDPMouseClient implements ClientModInitializer {
             RDPMouseConfig.save();
             applyMode(mc, newState);
 
-            if (mc.player != null) {
+            if (mc != null && mc.player != null) {
                 String key = newState ? "rdpmouse.status.on" : "rdpmouse.status.off";
                 mc.player.sendMessage(Text.translatable(key), true);
             }
+        }
+
+        if (mc == null || mc.player == null || mc.currentScreen != null) {
+            panLeftTicks = 0;
+            panRightTicks = 0;
+            panUpTicks = 0;
+            panDownTicks = 0;
+            releasedForFree = false;
+            wasFreeMouse = false;
+            return;
         }
 
         // Free mouse (hold to release grab)
@@ -140,11 +150,19 @@ public final class RDPMouseClient implements ClientModInitializer {
         }
         wasFreeMouse = holdingFree;
 
+        if (!mc.mouse.isCursorLocked()) {
+            panLeftTicks = 0;
+            panRightTicks = 0;
+            panUpTicks = 0;
+            panDownTicks = 0;
+            return;
+        }
+
         // Keyboard pan — divide by the vanilla sensitivity factor so pan speed is
         // independent of the mouse sensitivity setting, then apply 2.5x multiplier.
         double sens = mc.options.getMouseSensitivity().getValue();
         double d = sens * 0.6 + 0.2;
-        double sensitivityFactor = d * d * d * 8.0;
+        double sensitivityFactor = Math.max(1e-4, d * d * d * 8.0);
 
         if (PAN_LEFT.isPressed()) {
             RDPMouseState.panDX -= panSpeed(panLeftTicks++) * 2.5 / sensitivityFactor;

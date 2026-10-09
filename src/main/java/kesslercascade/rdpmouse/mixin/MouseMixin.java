@@ -41,10 +41,14 @@ public abstract class MouseMixin {
                 }
 
                 if (RDPMouseState.justRecenter) {
-                    RDPMouseState.justRecenter = false;
-                    RDPMouseState.lastX = x;
-                    RDPMouseState.lastY = y;
-                    return;
+                    double distSq = Math.pow(x - RDPMouseState.recenterTargetX, 2) + Math.pow(y - RDPMouseState.recenterTargetY, 2);
+                    double threshold = Math.max(16.0, winW * 0.05);
+                    if (distSq <= threshold * threshold) {
+                        RDPMouseState.justRecenter = false;
+                        RDPMouseState.lastX = x;
+                        RDPMouseState.lastY = y;
+                        return;
+                    }
                 }
 
                 double dx = x - RDPMouseState.lastX;
@@ -65,8 +69,12 @@ public abstract class MouseMixin {
                 int marginY = Math.max(20, (int) (winH * 0.15));
 
                 if (x < marginX || x > winW - marginX || y < marginY || y > winH - marginY) {
+                    double centerX = winW / 2.0;
+                    double centerY = winH / 2.0;
                     RDPMouseState.justRecenter = true;
-                    GLFW.glfwSetCursorPos(win, winW / 2.0, winH / 2.0);
+                    RDPMouseState.recenterTargetX = centerX;
+                    RDPMouseState.recenterTargetY = centerY;
+                    GLFW.glfwSetCursorPos(win, centerX, centerY);
                 }
             } else if (rdpmouse$vanillaCallback != null) {
                 rdpmouse$vanillaCallback.invoke(win, x, y);
@@ -89,8 +97,12 @@ public abstract class MouseMixin {
                 int winW = this.client.getWindow().getWidth();
                 int winH = this.client.getWindow().getHeight();
                 if (winW > 0 && winH > 0) {
+                    double centerX = winW / 2.0;
+                    double centerY = winH / 2.0;
                     RDPMouseState.justRecenter = true;
-                    GLFW.glfwSetCursorPos(window, winW / 2.0, winH / 2.0);
+                    RDPMouseState.recenterTargetX = centerX;
+                    RDPMouseState.recenterTargetY = centerY;
+                    GLFW.glfwSetCursorPos(window, centerX, centerY);
                 }
             }
         }
@@ -103,6 +115,16 @@ public abstract class MouseMixin {
         long window = this.client.getWindow().getHandle();
         if (window != 0L && RDPMouseState.enabled) {
             RDPMouseCursor.releaseClip();
+        }
+    }
+
+    @Inject(method = "onResolutionChanged", at = @At("TAIL"))
+    private void rdpmouse$onResolutionChanged(CallbackInfo ci) {
+        if (RDPMouseState.enabled && this.cursorLocked) {
+            long window = this.client.getWindow().getHandle();
+            if (window != 0L) {
+                RDPMouseCursor.clipCursor(window);
+            }
         }
     }
 

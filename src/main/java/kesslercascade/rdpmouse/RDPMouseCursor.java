@@ -24,13 +24,17 @@ public final class RDPMouseCursor {
             }
         }
         CLIP_CURSOR = clip;
+        if (clip != 0L) {
+            Runtime.getRuntime().addShutdownHook(new Thread(RDPMouseCursor::releaseClip, "RDPMouse-ReleaseClip"));
+        }
     }
 
     public static void clipCursor(long window) {
-        if (CLIP_CURSOR == 0L) return;
+        if (CLIP_CURSOR == 0L || window == 0L) return;
         int[] x = new int[1], y = new int[1], w = new int[1], h = new int[1];
         GLFW.glfwGetWindowPos(window, x, y);
         GLFW.glfwGetWindowSize(window, w, h);
+        if (w[0] <= 0 || h[0] <= 0) return;
         try (MemoryStack stack = MemoryStack.stackPush()) {
             long rect = stack.nmalloc(4, 16);
             MemoryUtil.memPutInt(rect,      x[0]);
@@ -43,6 +47,9 @@ public final class RDPMouseCursor {
 
     public static void releaseClip() {
         if (CLIP_CURSOR == 0L) return;
-        JNI.callPP(0L, CLIP_CURSOR);
+        try {
+            JNI.callPP(0L, CLIP_CURSOR);
+        } catch (Throwable ignored) {
+        }
     }
 }

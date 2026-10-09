@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version "1.10.1"
+    id 'fabric-loom' version '1.18-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -12,42 +12,17 @@ base {
 
 repositories {
     mavenCentral()
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Modrinth"
-                url = "https://api.modrinth.com/maven"
-            }
-        }
-        filter {
-            includeGroup "maven.modrinth"
-        }
+    maven {
+        name = "Fabric"
+        url = "https://maven.fabricmc.net/"
     }
-    maven { url = "https://maven.shedaniel.me/" }
-    maven { url = "https://maven.terraformersmc.com/releases/" }
-}
-
-def gitCommitHash = { ->
-    try {
-        ExecOutput result = providers.exec {
-            commandLine = ['git', 'rev-parse', '--short', 'HEAD']
-            ignoreExitValue = true
-        }
-        return result.getResult().get().getExitValue() != 0 ? "<UnknownCommit>" : result.standardOutput.asText.get().strip()
-    } catch (Exception e) {
-        return "<UnknownCommit>"
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/releases/"
     }
-}
-
-def buildtime = { System.currentTimeSeconds() }
-processResources {
-    def time = buildtime()
-    def hash = gitCommitHash()
-    def version = project.version
-
-    inputs.properties("version": version, "commit": hash, "buildtime": time)
-    filesMatching("fabric.mod.json") {
-        expand "version": version, "commit": hash, "buildtime": time
+    maven {
+        name = "shedaniel"
+        url = "https://maven.shedaniel.me/"
     }
 }
 
@@ -57,13 +32,32 @@ loom {
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    if (project.hasProperty('yarn_mappings') && !project.property('yarn_mappings').toString().trim().isEmpty()) {
+        mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    } else {
+        mappings files("empty-mappings.jar")
+    }
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modCompileOnly "com.terraformersmc:modmenu:13.0.0"
+    def fabricApi = project.findProperty('fabric_api_version') ?: project.findProperty('fabric_version')
+    if (fabricApi) {
+        modImplementation "net.fabricmc.fabric-api:fabric-api:${fabricApi}"
+    }
+
+    if (project.hasProperty('modmenu_version') && !project.property('modmenu_version').toString().trim().isEmpty()) {
+        modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+    }
 }
 
-def targetJavaVersion = 21
+processResources {
+    inputs.property "version", project.version
+    inputs.property "minecraft_version", project.minecraft_version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version, "minecraft_version": project.minecraft_version
+    }
+}
+
+def targetJavaVersion = project.minecraft_version.startsWith('26') ? 25 : 21
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
@@ -80,7 +74,7 @@ java {
 
 jar {
     from("LICENSE") {
-        rename { "${it}_${project.archives_base_name}" }
+        rename { "${it}_${project.base.archivesName.get()}" }
     }
 }
 
@@ -88,21 +82,27 @@ remapJar {
     archiveFileName = "${project.archives_base_name}.jar"
 }
 
-def launcherModsDir = file("E:/ATLauncher/instances/FabulouslyOptimizedFPStest1214/mods")
-
-tasks.register('copyToLauncher', Copy) {
-    onlyIf {
-        launcherModsDir.exists()
-    }
+def allBuildsDir = file("C:/Users/Mr712/Documents/RDPMouse_all_builds")
+tasks.register('copyToAllBuilds', Copy) {
     dependsOn remapJar
     from remapJar.archiveFile
-    into launcherModsDir
+    into allBuildsDir
     doLast {
-        println ">>> Copied ${remapJar.archiveFileName.get()} to ATLauncher instance mods folder!"
+        println ">>> Copied ${remapJar.archiveFileName.get()} to ${allBuildsDir.absolutePath}!"
     }
 }
 
-if (launcherModsDir.exists()) {
+build.finalizedBy(copyToAllBuilds)
+
+def launcherModsDir = file("E:/ATLauncher/instances/FabulouslyOptimizedFPStest1214/mods")
+if (launcherModsDir.exists() && project.minecraft_version == '1.21.4') {
+    tasks.register('copyToLauncher', Copy) {
+        dependsOn remapJar
+        from remapJar.archiveFile
+        into launcherModsDir
+        doLast {
+            println ">>> Copied ${remapJar.archiveFileName.get()} to ATLauncher instance mods folder!"
+        }
+    }
     build.finalizedBy(copyToLauncher)
 }
-

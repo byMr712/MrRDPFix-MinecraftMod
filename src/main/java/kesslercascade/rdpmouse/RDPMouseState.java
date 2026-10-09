@@ -10,6 +10,8 @@ public final class RDPMouseState {
     public static volatile double lastX = UNSET;
     public static volatile double lastY = UNSET;
     public static volatile boolean justRecenter = false;
+    public static volatile double recenterTargetX = UNSET;
+    public static volatile double recenterTargetY = UNSET;
 
     /** Camera pan deltas injected by keyboard pan keys each tick. */
     public static volatile double panDX = 0;
@@ -19,5 +21,9 @@ public final class RDPMouseState {
         lastX = UNSET;
         lastY = UNSET;
         justRecenter = false;
+        recenterTargetX = UNSET;
+        recenterTargetY = UNSET;
+        panDX = 0;
+        panDY = 0;
     }
 }
