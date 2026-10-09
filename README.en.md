@@ -1,6 +1,6 @@
 > **Language:** [Русский](README.md) · English
 
-# RDPMouse (Minecraft 1.21.4 Fabric Port)
+# MrRdpFix (Minecraft 1.21.4 Fabric Port)
 
 ![Java 21](https://img.shields.io/badge/Java-21-blue.svg)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.4-blue.svg)
@@ -8,7 +8,7 @@
 ![ModMenu](https://img.shields.io/badge/ModMenu-Supported-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Port and update of the **RDPMouse** mod for **Minecraft 1.21.4 (Fabric)**.
+Port and update of the **MrRdpFix** ([MR] RDP Mouse) mod for **Minecraft 1.21.4 (Fabric)**.
 
 Original Developer: [KesslerCascade/RDPMouse](https://github.com/KesslerCascade/RDPMouse).
 
@@ -56,7 +56,7 @@ All key bindings can be configured in: *Options -> Controls -> Key Binds -> RDP 
 
 ## Installation
 
-1. Download the latest release from [GitHub Releases](https://github.com/byMr712/RDPMouse-MinecraftMod/releases).
+1. Download the latest release from [GitHub Releases](https://github.com/byMr712/MrRDPFix-MinecraftMod/releases).
 2. Requires:
    - [Fabric API](https://modrinth.com/mod/fabric-api)
 3. Place the `.jar` file into your `mods` folder.
@@ -75,7 +75,7 @@ All key bindings can be configured in: *Options -> Controls -> Key Binds -> RDP 
    ```bash
    ./gradlew build
    ```
-3. The built jar file will be located at `build/libs/RDPMouse-1.21.4-byMr712.jar`.
+3. The built jar file will be located at `build/libs/MrRdpFix-Fabric-1.21.2-byMr712-v1.0.jar`.
 
 ---
 
