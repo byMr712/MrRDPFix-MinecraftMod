@@ -1,6 +1,6 @@
 > **Language:** Русский · [English](README.en.md)
 
-# RDPMouse (Minecraft 1.21.4 Fabric Port)
+# MrRdpFix (Minecraft 1.21.4 Fabric Port)
 
 ![Java 21](https://img.shields.io/badge/Java-21-blue.svg)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.4-blue.svg)
@@ -8,7 +8,7 @@
 ![ModMenu](https://img.shields.io/badge/ModMenu-Supported-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Порт и обновление мода **RDPMouse** для **Minecraft 1.21.4 (Fabric)**.
+Порт и обновление мода **MrRdpFix** ([MR] RDP Mouse) для **Minecraft 1.21.4 (Fabric)**.
 
 Оригинальный разработчик: [KesslerCascade/RDPMouse](https://github.com/KesslerCascade/RDPMouse).
 
@@ -56,7 +56,7 @@ Minecraft по умолчанию использует прямое относи
 
 ## Установка
 
-1. Скачайте последнюю версию мода со страницы [GitHub Releases](https://github.com/byMr712/RDPMouse-MinecraftMod/releases).
+1. Скачайте последнюю версию мода со страницы [GitHub Releases](https://github.com/byMr712/MrRDPFix-MinecraftMod/releases).
 2. Требуются:
    - [Fabric API](https://modrinth.com/mod/fabric-api)
 3. Поместите `.jar` файл в папку `mods`.
@@ -75,7 +75,7 @@ Minecraft по умолчанию использует прямое относи
    ```bash
    ./gradlew build
    ```
-3. Собранный файл находится в `build/libs/RDPMouse-1.21.4-byMr712.jar`.
+3. Собранный файл находится в `build/libs/MrRdpFix-Fabric-1.21.8-byMr712-v1.0.jar`.
 
 ---
 
