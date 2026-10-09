@@ -56,7 +56,7 @@ Minecraft по умолчанию использует прямое относи
 
 ## Установка
 
-1. Скачайте последнюю версию мода со страницы [GitHub Releases](https://github.com/byMr712/RDPMouse-1.21.4-MinecraftMod/releases).
+1. Скачайте последнюю версию мода со страницы [GitHub Releases](https://github.com/byMr712/RDPMouse-MinecraftMod/releases).
 2. Требуются:
    - [Fabric API](https://modrinth.com/mod/fabric-api)
 3. Поместите `.jar` файл в папку `mods`.
