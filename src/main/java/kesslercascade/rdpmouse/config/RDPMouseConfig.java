@@ -20,6 +20,7 @@ public class RDPMouseConfig {
     private static RDPMouseConfig INSTANCE = new RDPMouseConfig();
 
     public boolean rdpModeEnabled = true;
+    public int sensitivityBoost = 75;
 
     public static RDPMouseConfig getInstance() {
         return INSTANCE;
@@ -38,7 +39,9 @@ public class RDPMouseConfig {
         } else {
             save();
         }
+        INSTANCE.sensitivityBoost = Math.max(0, Math.min(100, INSTANCE.sensitivityBoost));
         RDPMouseState.enabled = INSTANCE.rdpModeEnabled;
+        RDPMouseState.sensitivityMultiplier = 1.0 + (INSTANCE.sensitivityBoost / 100.0);
     }
 
     public static void save() {
