@@ -18,7 +18,7 @@ Original Developer: [KesslerCascade/RDPMouse](https://github.com/KesslerCascade/
 
 Minecraft uses raw relative mouse input by default, which Windows blocks over Remote Desktop (RDP). As a result, the in-game camera spins uncontrollably the moment you move the mouse (known bugs [MC-107122](https://bugs.mojang.com/browse/MC-107122) and [MC-126875](https://bugs.mojang.com/browse/MC-126875)).
 
-**RDPMouse** replaces raw relative input with absolute cursor position tracking supported by the RDP protocol, restoring full, smooth camera control.
+**MrRdpFix** replaces raw relative input with absolute cursor position tracking supported by the RDP protocol, restoring full, smooth camera control.
 
 ---
 
@@ -47,6 +47,9 @@ All key bindings can be configured in: *Options -> Controls -> Key Binds -> RDP 
   - Built on modern stack (Java 21 LTS, Fabric Loom 1.10.1, Yarn `1.21.4+build.7`).
   - Adapted key mapping registration and GLFW Window / Mouse hooks for 1.21.4 mappings and architecture.
   - Optimized flat Fabric project layout with zero unnecessary dependencies.
+- **Mod Menu Support & Configuration**:
+  - Mod configuration screen in Mod Menu.
+  - Adjustable mouse sensitivity boost slider (0–100%, default 75%).
 - **Full Localization**:
   - Added Russian (`ru_ru.json`) and English (`en_us.json`) translations.
 - **Build Convenience**:
