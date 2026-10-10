@@ -3,7 +3,7 @@
   "id": "rdpmouse",
   "version": "${version}",
   "name": "[MR] True RDP Fix",
-  "description": "Fixes mouse look when playing over RDP (Remote Desktop Protocol), and allows camera rotation with the keyboard.",
+  "description": "Fixes mouse look when playing over Windows Remote Desktop (RDP) via native GLFW 3.4+ backport.",
   "license": "MIT",
   "environment": "client",
   "authors": [
@@ -17,18 +17,8 @@
   "entrypoints": {
     "preLaunch": [
       "kesslercascade.rdpmouse.RDPMousePreLaunch"
-    ],
-    "client": [
-      "kesslercascade.rdpmouse.RDPMouseClient"
-    ],
-    "modmenu": [
-      "kesslercascade.rdpmouse.config.RDPMouseModMenu"
     ]
   },
-  "mixins": [
-    "rdpmouse.mixins.json"
-  ],
-  "accessWidener": "rdpmouse.accesswidener",
   "depends": {
     "fabricloader": ">=0.19.5",
     "minecraft": "${minecraft_version}",
