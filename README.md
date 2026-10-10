@@ -53,7 +53,7 @@ Mojang решили эту проблему только в снапшотах 2
 ## Авторы и лицензии
 
 - **MrTrueRdpFix:** распространяется под лицензией [MIT License](LICENSE).  
-  Авторы: [KesslerCascade](https://www.curseforge.com/minecraft/mc-mods/rdpmouse), [Mr712](https://github.com/byMr712).
+  Авторы: [Mr712](https://github.com/byMr712), [KesslerCascade](https://www.curseforge.com/minecraft/mc-mods/rdpmouse).
 - **Встроенные сторонние компоненты:**
   - **GLFW:** [zlib/libpng License](https://www.glfw.org/license.html) (Copyright © Camilla Löwy, Marcus Geelnard & GLFW Contributors).
   - **LWJGL:** [BSD 3-Clause License](https://www.lwjgl.org/license) (Copyright © Lightweight Java Game Library).

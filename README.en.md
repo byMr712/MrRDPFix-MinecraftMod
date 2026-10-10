@@ -51,7 +51,7 @@ The mod operates completely silently in the background:
 ## Authors & Licenses
 
 - **MrTrueRdpFix:** Licensed under the [MIT License](LICENSE).  
-  Authors: [KesslerCascade](https://www.curseforge.com/minecraft/mc-mods/rdpmouse), [Mr712](https://github.com/byMr712).
+  Authors: [Mr712](https://github.com/byMr712), [KesslerCascade](https://www.curseforge.com/minecraft/mc-mods/rdpmouse).
 - **Bundled Third-Party Components:**
   - **GLFW:** [zlib/libpng License](https://www.glfw.org/license.html) (Copyright © Camilla Löwy, Marcus Geelnard & GLFW Contributors).
   - **LWJGL:** [BSD 3-Clause License](https://www.lwjgl.org/license) (Copyright © Lightweight Java Game Library).
