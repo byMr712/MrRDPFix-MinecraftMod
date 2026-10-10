@@ -1,6 +1,6 @@
 > **Language:** [Русский](README.md) · English
 
-# MrRdpFix (Fabric 1.21.x)
+# MrTrueRdpFix (Fabric 1.21.x)
 
 ![Java 21](https://img.shields.io/badge/Java-21-blue.svg)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.x-blue.svg)
@@ -10,10 +10,7 @@
 
 Fixes mouse look and erratic camera behavior when playing **Minecraft 1.21.x (Fabric)** over **Windows Remote Desktop (RDP)**.
 
-Original Author: [KesslerCascade/RDPMouse](https://github.com/KesslerCascade/RDPMouse).  
-Modern update, GLFW backport & 1.21.x support: [byMr712](https://github.com/byMr712).
-
----
+This mod is inspired by the work of: [**RDPMouse by KesslerCascade**](https://github.com/KesslerCascade/RDPMouse)
 
 ## The Problem & The Solution
 
@@ -21,12 +18,10 @@ Minecraft 1.13 through 1.21.x bundles LWJGL 3.3.3 with an older GLFW 3.3 build, 
 
 Mojang officially updated LWJGL/GLFW only in the 26.X snapshots.
 
-**MrRdpFix** provides a clean **native backport of GLFW 3.4+** to Minecraft 1.21.x:
+**MrTrueRdpFix** provides a clean **native backport of GLFW 3.4+** to Minecraft 1.21.x:
 1. On startup (before the game window is created), the mod transparently unpacks and directs LWJGL to a bundled **GLFW 3.4+** native library (incorporating PR #1279 and PR #2431).
 2. Mouse input is processed natively and hardware-accelerated by GLFW — no fragile Java-level hacks, input latency, or cursor stutter.
 3. Provides additional quality-of-life features: smooth keyboard camera panning (arrow keys) and a hold-to-free cursor key (Alt).
-
----
 
 ## Controls
 
@@ -35,17 +30,13 @@ Mojang officially updated LWJGL/GLFW only in the 26.X snapshots.
 - **Alt (hold):** Temporarily release cursor grab (Free Mouse).
 - **Arrow keys (Left / Right / Up / Down):** Smooth camera rotation from the keyboard.
 
-All key bindings are configurable under *Options -> Controls -> Key Binds -> [MR] RDP Fix*.
-
----
+All key bindings are configurable under *Options -> Controls -> Key Binds -> [MR] True RDP Fix*.
 
 ## Mod Menu Support
 
 The mod includes full **Mod Menu** configuration:
 - Toggle RDP / keyboard rotation mode.
 - Customize keyboard rotation sensitivity.
-
----
 
 ## Building
 
@@ -60,11 +51,9 @@ The mod includes full **Mod Menu** configuration:
    ```
 3. The built JAR file will be in `build/libs/`.
 
----
-
 ## Authors & Licenses
 
-- **MrRdpFix:** Licensed under the [MIT License](LICENSE).  
+- **MrTrueRdpFix:** Licensed under the [MIT License](LICENSE).  
   Authors: [KesslerCascade](https://github.com/KesslerCascade), [Mr712](https://github.com/byMr712).
 - **Bundled Third-Party Components:**
   - **GLFW:** [zlib/libpng License](https://www.glfw.org/license.html) (Copyright © Camilla Löwy, Marcus Geelnard & GLFW Contributors).
