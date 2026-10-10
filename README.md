@@ -1,6 +1,6 @@
 > **Language:** Русский · [English](README.en.md)
 
-# MrRdpFix (Fabric 1.21.x)
+# MrTrueRdpFix (Fabric 1.21.x)
 
 ![Java 21](https://img.shields.io/badge/Java-21-blue.svg)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.x-blue.svg)
@@ -10,10 +10,7 @@
 
 Исправление управления мышью при игре в **Minecraft 1.21.x (Fabric)** через **Windows Remote Desktop (RDP)**.
 
-Оригинальный разработчик: [KesslerCascade/RDPMouse](https://github.com/KesslerCascade/RDPMouse).  
-Обновление, бэкпорт GLFW и поддержка 1.21.x: [byMr712](https://github.com/byMr712).
-
----
+Данный мод вдохновлён работой: [**RDPMouse от KesslerCascade**](https://github.com/KesslerCascade/RDPMouse)
 
 ## О проблеме и решении
 
@@ -21,12 +18,10 @@
 
 Mojang исправили эту проблему только в снапшотах 26.X, обновив GLFW до версии 3.4+.
 
-**MrRdpFix** выполняет **нативный бэкпорт GLFW 3.4+** в Minecraft 1.21.x:
+**MrTrueRdpFix** выполняет **нативный бэкпорт GLFW 3.4+** в Minecraft 1.21.x:
 1. При запуске игры мод автоматически распаковывает и подключает нативную библиотеку **GLFW 3.4+** (с официальными исправлениями PR #1279 / PR #2431) до загрузки графического окна.
 2. Игра считывает ввод мыши аппаратно и нативно через пропатченный GLFW — без кривых Java-перехватов, задержек или срывов курсора.
 3. Дополнительно предоставляется возможность плавного вращения камеры стрелками с клавиатуры и быстрого освобождения курсора (Alt).
-
----
 
 ## Использование и управление
 
@@ -35,17 +30,13 @@ Mojang исправили эту проблему только в снапшот
 - **Alt (удержание):** временно освободить захват курсора (Free Mouse).
 - **Стрелки (Left / Right / Up / Down):** плавное вращение камеры с клавиатуры.
 
-Все клавиши настраиваются в: *Настройки -> Управление -> Назначение клавиш -> [MR] RDP Fix*.
-
----
+Все клавиши настраиваются в: *Настройки -> Управление -> Назначение клавиш -> [MR] True RDP Fix*.
 
 ## Настройки (Mod Menu)
 
 Мод полностью поддерживает **Mod Menu**:
 - Включение / отключение режима RDP.
 - Настройка чувствительности клавиатурного вращения.
-
----
 
 ## Сборка
 
@@ -60,11 +51,9 @@ Mojang исправили эту проблему только в снапшот
    ```
 3. Собранный файл мода находится в `build/libs/`.
 
----
-
 ## Авторы и лицензии
 
-- **MrRdpFix:** распространяется под лицензией [MIT License](LICENSE).  
+- **MrTrueRdpFix:** распространяется под лицензией [MIT License](LICENSE).  
   Авторы: [KesslerCascade](https://github.com/KesslerCascade), [Mr712](https://github.com/byMr712).
 - **Встроенные сторонние компоненты:**
   - **GLFW:** [zlib/libpng License](https://www.glfw.org/license.html) (Copyright © Camilla Löwy, Marcus Geelnard & GLFW Contributors).
