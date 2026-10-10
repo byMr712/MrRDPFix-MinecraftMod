@@ -6,41 +6,29 @@
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.x-blue.svg)
 ![Fabric](https://img.shields.io/badge/Loader-Fabric-blue.svg)
 ![Fabric API](https://img.shields.io/badge/Fabric%20API-Not%20Required-success.svg)
-[![ModMenu](https://img.shields.io/badge/ModMenu-Supported-blue.svg)](https://www.curseforge.com/minecraft/mc-mods/modmenu)
+![Zero Config](https://img.shields.io/badge/Config-Zero%20Config-brightgreen.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Fixes mouse look and erratic camera behavior when playing **Minecraft 1.21.x (Fabric)** over **Windows Remote Desktop (RDP)**.
+Native fix for mouse look and camera rotation when playing **Minecraft 1.21.x (Fabric)** over **Windows Remote Desktop (RDP)**.
 
 This mod is inspired by the work of: [**RDPMouse by KesslerCascade**](https://www.curseforge.com/minecraft/mc-mods/rdpmouse)
 
 ## The Problem & The Solution
 
-Minecraft 1.13 through 1.21.x bundles LWJGL 3.3.3 with an older GLFW 3.3 build, which fails to handle Windows virtual desktop input over RDP ([MC-126875](https://bugs.mojang.com/browse/MC-126875), GLFW issue [#1276](https://github.com/glfw/glfw/issues/1276)). Under RDP, Windows sets the `MOUSE_VIRTUAL_DESKTOP` flag, causing the camera to spin uncontrollably or get stuck at the edge of the monitor.
+Minecraft 1.13 through 1.21.x bundles LWJGL 3.3.3 with an older GLFW 3.3 build, which fails to handle Windows virtual desktop mouse input over RDP ([MC-126875](https://bugs.mojang.com/browse/MC-126875), GLFW issue [#1276](https://github.com/glfw/glfw/issues/1276)). Under RDP, Windows sets the `MOUSE_VIRTUAL_DESKTOP` flag, causing the camera to spin uncontrollably into the sky or get stuck at the edge of the monitor.
 
-Mojang officially updated LWJGL/GLFW only in the 26.X snapshots.
+Mojang resolved this issue in the 26.X snapshots by upgrading GLFW to 3.4+.
 
 **MrTrueRdpFix** provides a clean **native backport of GLFW 3.4+** to Minecraft 1.21.x:
-1. On startup (before the game window is created), the mod transparently unpacks and directs LWJGL to a bundled **GLFW 3.4+** native library (incorporating [PR #1279](https://github.com/glfw/glfw/pull/1279) and [PR #2431](https://github.com/glfw/glfw/pull/2431)).
-2. Mouse input is processed natively and hardware-accelerated by GLFW — no fragile Java-level hacks, input latency, or cursor stutter.
-3. Features an optional mouse sensitivity boost (from 0% to +100%, default 0%). This is an add-on applied on top of normal in-game Minecraft sensitivity settings: if camera movement feels too sluggish over RDP, the multiplier can be customized in the mod settings via [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu).
-4. Provides additional quality-of-life features: smooth keyboard camera panning (arrow keys) and a hold-to-free cursor key (Alt).
-5. **Zero Fabric API Dependency:** Fabric API is **NOT required** — the mod runs directly on pure Fabric Loader (while remaining 100% compatible with any modpacks that include Fabric API).
+1. On startup (before the game window is created), the mod transparently unpacks and directs LWJGL to a bundled **GLFW 3.4+** native library (incorporating official fixes from [PR #1279](https://github.com/glfw/glfw/pull/1279) and [PR #2431](https://github.com/glfw/glfw/pull/2431)).
+2. Mouse input is processed natively and hardware-accelerated by GLFW — no input latency, cursor stutter, or fragile Java-level hacks.
 
-## Controls
+## Zero-Config ("Install & Forget")
 
-- **Mouse:** Works smoothly with 360-degree rotation over RDP, identical to vanilla local gameplay.
-- **Sensitivity Boost:** Optional add-on (0% to +100%, default 0%) on top of normal Minecraft sensitivity settings (configured in [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu)).
-- **F8:** Toggle RDP mode on or off.
-- **Alt (hold):** Temporarily release cursor grab (Free Mouse).
-- **Arrow keys (Left / Right / Up / Down):** Smooth camera rotation from the keyboard.
-
-All key bindings are configurable under *Options -> Controls -> Key Binds -> [MR] True RDP Fix*.
-
-## Mod Menu Support
-
-The mod includes full [**Mod Menu**](https://www.curseforge.com/minecraft/mc-mods/modmenu) configuration:
-- Toggle RDP mode.
-- Extra mouse sensitivity boost slider (applied on top of vanilla sensitivity from 0% to 100%, default 0%).
+The mod operates completely silently in the background:
+- **No extra menus or config files:** Mouse look behaves 100% like local vanilla gameplay right after installation.
+- **No unnecessary keybindings:** Does not clutter the game's controls menu with extra keys.
+- **Zero Dependencies:** Fabric API is **NOT required** — the mod runs directly on pure Fabric Loader (while remaining 100% compatible with any modpacks).
 
 ## Building
 
