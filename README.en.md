@@ -9,21 +9,26 @@
 ![Zero Config](https://img.shields.io/badge/Config-Zero%20Config-brightgreen.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Native fix for mouse look and camera rotation when playing **Minecraft 1.21.x (Fabric)** over **Windows Remote Desktop (RDP)**.
+Fixes mouse look when playing **Minecraft 1.21.x (Fabric)** over **Remote Desktop Protocol (RDP)**.
 
 This mod is inspired by the work of: [**RDPMouse by KesslerCascade**](https://www.curseforge.com/minecraft/mc-mods/rdpmouse)
 
-## The Problem & The Solution
+## Gallery
+| Vanilla Game | With This Mod |
+| :---: | :---: |
+| ![Full_vanilla](images/Full_vanilla.webp) | ![This_mod](images/This_mod.webp) |
 
-Minecraft 1.13 through 1.21.x bundles LWJGL 3.3.3 with an older GLFW 3.3 build, which fails to handle Windows virtual desktop mouse input over RDP ([MC-126875](https://bugs.mojang.com/browse/MC-126875), GLFW issue [#1276](https://github.com/glfw/glfw/issues/1276)). Under RDP, Windows sets the `MOUSE_VIRTUAL_DESKTOP` flag, causing the camera to spin uncontrollably into the sky or get stuck at the edge of the monitor.
+## About the Mod
+Minecraft versions 1.13 through 1.21.x bundle LWJGL 3.3.3 with an older GLFW 3.3 build, which fails to handle Windows virtual desktop mouse input over RDP ([MC-126875](https://bugs.mojang.com/browse/MC-126875), GLFW issue [#1276](https://github.com/glfw/glfw/issues/1276)). Under RDP, Windows sets the `MOUSE_VIRTUAL_DESKTOP` flag, causing the camera to spin uncontrollably into the sky or get stuck at the edge of the monitor.
 
 Mojang resolved this issue in the 26.X snapshots by upgrading GLFW to 3.4+.
 
+## What Does the Mod Do?
 **MrTrueRdpFix** provides a clean **native backport of GLFW 3.4+** to Minecraft 1.21.x:
 1. On startup (before the game window is created), the mod transparently unpacks and directs LWJGL to a bundled **GLFW 3.4+** native library (incorporating official fixes from [PR #1279](https://github.com/glfw/glfw/pull/1279) and [PR #2431](https://github.com/glfw/glfw/pull/2431)).
 2. Mouse input is processed natively and hardware-accelerated by GLFW — no input latency, cursor stutter, or fragile Java-level hacks.
 
-## Zero-Config ("Install & Forget")
+## "Install & Forget"
 
 The mod operates completely silently in the background:
 - **No extra menus or config files:** Mouse look behaves 100% like local vanilla gameplay right after installation.
@@ -46,7 +51,7 @@ The mod operates completely silently in the background:
 ## Authors & Licenses
 
 - **MrTrueRdpFix:** Licensed under the [MIT License](LICENSE).  
-  Authors: [KesslerCascade](https://www.curseforge.com/minecraft/mc-mods/rdpmouse), [Mr712](https://github.com/byMr712).
+  Authors: [Mr712](https://github.com/byMr712), [KesslerCascade](https://www.curseforge.com/minecraft/mc-mods/rdpmouse).
 - **Bundled Third-Party Components:**
   - **GLFW:** [zlib/libpng License](https://www.glfw.org/license.html) (Copyright © Camilla Löwy, Marcus Geelnard & GLFW Contributors).
   - **LWJGL:** [BSD 3-Clause License](https://www.lwjgl.org/license) (Copyright © Lightweight Java Game Library).
