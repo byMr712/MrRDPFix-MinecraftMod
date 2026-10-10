@@ -15,6 +15,9 @@
     "sources": "https://github.com/byMr712/MrRDPFix-MinecraftMod"
   },
   "entrypoints": {
+    "preLaunch": [
+      "kesslercascade.rdpmouse.RDPMousePreLaunch"
+    ],
     "client": [
       "kesslercascade.rdpmouse.RDPMouseClient"
     ],
