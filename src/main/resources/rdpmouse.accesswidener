@@ -1,5 +1,0 @@
-accessWidener	v2	named
-
-accessible	field	net/minecraft/client/Mouse	cursorDeltaX	D
-accessible	field	net/minecraft/client/Mouse	cursorDeltaY	D
-accessible	field	net/minecraft/client/Mouse	cursorLocked	Z
