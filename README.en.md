@@ -5,8 +5,6 @@
 ![Java 21](https://img.shields.io/badge/Java-21-blue.svg)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.x-blue.svg)
 ![Fabric](https://img.shields.io/badge/Loader-Fabric-blue.svg)
-![Fabric API](https://img.shields.io/badge/Fabric%20API-Not%20Required-success.svg)
-![Zero Config](https://img.shields.io/badge/Config-Zero%20Config-brightgreen.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 Fixes mouse look when playing **Minecraft 1.21.x (Fabric)** over **Remote Desktop Protocol (RDP)**.
