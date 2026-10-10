@@ -32,7 +32,7 @@ public class RDPMousePreLaunch implements PreLaunchEntrypoint {
             String resourcePath = "/natives/windows/" + archDir + "/glfw.dll";
             try (InputStream in = RDPMousePreLaunch.class.getResourceAsStream(resourcePath)) {
                 if (in == null) {
-                    System.err.println("[MrRdpFix] Bundled GLFW native not found for: " + resourcePath);
+                    System.err.println("[MR True RDP Fix] Bundled GLFW native not found for: " + resourcePath);
                     return;
                 }
 
@@ -53,10 +53,10 @@ public class RDPMousePreLaunch implements PreLaunchEntrypoint {
                 String absoluteDll = targetDll.toAbsolutePath().toString();
                 Configuration.GLFW_LIBRARY_NAME.set(absoluteDll);
                 System.setProperty("org.lwjgl.glfw.libname", absoluteDll);
-                System.out.println("[MrRdpFix] Backported GLFW 3.4+ native library loaded for RDP fix: " + absoluteDll);
+                System.out.println("[MR True RDP Fix] Backported GLFW 3.4+ native library loaded for RDP fix: " + absoluteDll);
             }
         } catch (Throwable t) {
-            System.err.println("[MrRdpFix] Failed to inject GLFW 3.4+ native library:");
+            System.err.println("[MR True RDP Fix] Failed to inject GLFW 3.4+ native library:");
             t.printStackTrace();
         }
     }
