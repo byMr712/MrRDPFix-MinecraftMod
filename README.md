@@ -5,6 +5,7 @@
 ![Java 21](https://img.shields.io/badge/Java-21-blue.svg)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.x-blue.svg)
 ![Fabric](https://img.shields.io/badge/Loader-Fabric-blue.svg)
+![Fabric API](https://img.shields.io/badge/Fabric%20API-Not%20Required-success.svg)
 [![ModMenu](https://img.shields.io/badge/ModMenu-Supported-blue.svg)](https://www.curseforge.com/minecraft/mc-mods/modmenu)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
@@ -23,6 +24,7 @@ Mojang исправили эту проблему только в снапшот
 2. Игра считывает ввод мыши аппаратно и нативно через пропатченный GLFW — без кривых Java-перехватов, задержек или срывов курсора.
 3. Предусмотрена возможность дополнительного усиления чувствительности мыши (от 0% до +100%, по умолчанию 0%). Это надстройка поверх обычных внутриигровых настроек чувствительности Minecraft: если при игре через RDP вам покажется, что камера движется медленнее привычного, этот коэффициент можно гибко настроить (от 0% до 100%) в меню мода через [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu).
 4. Дополнительно предоставляется возможность плавного вращения камеры стрелками с клавиатуры и быстрого освобождения курсора (Alt).
+5. **Полная автономность:** моду **НЕ требуется Fabric API** — он работает напрямую на чистом Fabric Loader (и полностью совместим с любыми сборками, где Fabric API установлен).
 
 ## Использование и управление
 
