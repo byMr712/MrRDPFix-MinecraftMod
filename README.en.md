@@ -5,6 +5,7 @@
 ![Java 21](https://img.shields.io/badge/Java-21-blue.svg)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.x-blue.svg)
 ![Fabric](https://img.shields.io/badge/Loader-Fabric-blue.svg)
+![Fabric API](https://img.shields.io/badge/Fabric%20API-Not%20Required-success.svg)
 [![ModMenu](https://img.shields.io/badge/ModMenu-Supported-blue.svg)](https://www.curseforge.com/minecraft/mc-mods/modmenu)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
@@ -23,6 +24,7 @@ Mojang officially updated LWJGL/GLFW only in the 26.X snapshots.
 2. Mouse input is processed natively and hardware-accelerated by GLFW — no fragile Java-level hacks, input latency, or cursor stutter.
 3. Features an optional mouse sensitivity boost (from 0% to +100%, default 0%). This is an add-on applied on top of normal in-game Minecraft sensitivity settings: if camera movement feels too sluggish over RDP, the multiplier can be customized in the mod settings via [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu).
 4. Provides additional quality-of-life features: smooth keyboard camera panning (arrow keys) and a hold-to-free cursor key (Alt).
+5. **Zero Fabric API Dependency:** Fabric API is **NOT required** — the mod runs directly on pure Fabric Loader (while remaining 100% compatible with any modpacks that include Fabric API).
 
 ## Controls
 
