@@ -3,6 +3,7 @@
   "id": "rdpmouse",
   "version": "${version}",
   "name": "[MR] True RDP Fix",
+  "icon": "assets/rdpmouse/icon.png",
   "description": "Fixes mouse look when playing over Windows Remote Desktop (RDP) via native GLFW 3.4+ backport.",
   "license": "MIT",
   "environment": "client",
