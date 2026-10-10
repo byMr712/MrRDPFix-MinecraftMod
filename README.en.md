@@ -21,12 +21,14 @@ Mojang officially updated LWJGL/GLFW only in the 26.X snapshots.
 **MrTrueRdpFix** provides a clean **native backport of GLFW 3.4+** to Minecraft 1.21.x:
 1. On startup (before the game window is created), the mod transparently unpacks and directs LWJGL to a bundled **GLFW 3.4+** native library (incorporating PR #1279 and PR #2431).
 2. Mouse input is processed natively and hardware-accelerated by GLFW — no fragile Java-level hacks, input latency, or cursor stutter.
-3. Provides additional quality-of-life features: smooth keyboard camera panning (arrow keys) and a hold-to-free cursor key (Alt).
+3. By default, the mod adds a **+50% sensitivity boost** on top of your current in-game sensitivity setting, ensuring a responsive camera feel over remote desktop. This extra boost can be freely adjusted (from 0% to 100%) in the mod settings via Mod Menu.
+4. Provides additional quality-of-life features: smooth keyboard camera panning (arrow keys) and a hold-to-free cursor key (Alt).
 
 ## Controls
 
 - **Mouse:** Works smoothly with 360-degree rotation over RDP, identical to vanilla local gameplay.
-- **F8:** Toggle RDP / keyboard rotation mode on or off.
+- **Sensitivity Boost:** Enabled by default (+50% boost over vanilla sensitivity), fully configurable in Mod Menu.
+- **F8:** Toggle RDP mode on or off.
 - **Alt (hold):** Temporarily release cursor grab (Free Mouse).
 - **Arrow keys (Left / Right / Up / Down):** Smooth camera rotation from the keyboard.
 
@@ -35,8 +37,8 @@ All key bindings are configurable under *Options -> Controls -> Key Binds -> [MR
 ## Mod Menu Support
 
 The mod includes full **Mod Menu** configuration:
-- Toggle RDP / keyboard rotation mode.
-- Customize keyboard rotation sensitivity.
+- Toggle RDP mode.
+- Mouse sensitivity boost slider (0% to 100%, default +50%).
 
 ## Building
 
