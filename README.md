@@ -29,12 +29,13 @@ Mojang решили эту проблему только в снапшотах 2
 1. При запуске игры мод автоматически подключает нативную библиотеку **GLFW 3.4+** (содержащую официальные исправления [PR #1279](https://github.com/glfw/glfw/pull/1279) и [PR #2431](https://github.com/glfw/glfw/pull/2431)) до инициализации окна игры.
 2. Ввод мыши обрабатывается аппаратно и нативно на уровне самой системы — без задержек, срывов курсора и сторонних Java-перехватов.
 
-## «Поставил и забыл»
+## Установка
 
-Мод работает абсолютно бесшумно и прозрачно для игрока:
-- **Никаких лишних настроек и меню:** управление мышью сразу работает на 100% ванильно, плавно и на 360 градусов.
-- **Никаких лишних клавиш:** игра не захламляется ненужными биндами и кнопками.
-- **Полная автономность:** моду **НЕ требуется Fabric API** — он работает напрямую на чистом Fabric Loader (и при этом на 100% совместим с любыми сборками и модпаками).
+1. Скачайте последнюю версию мода со страницы на [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mr-true-rdp-fix) или [GitHub Releases](https://github.com/byMr712/MrTrueRdpFix-MinecraftMod/releases).
+2. Требуются:
+   - Только ядро ​​Fabric - другие моды, такие как Fabric API, не требуются.
+3. Поместите `.jar` файл в папку `mods`.
+4. Запустите игру.
 
 ## Сборка
 
@@ -52,7 +53,7 @@ Mojang решили эту проблему только в снапшотах 2
 ## Авторы и лицензии
 
 - **MrTrueRdpFix:** распространяется под лицензией [MIT License](LICENSE).  
-  Авторы: [KesslerCascade](https://www.curseforge.com/minecraft/mc-mods/rdpmouse), [Mr712](https://github.com/byMr712).
+  Авторы: [Mr712](https://github.com/byMr712), [KesslerCascade](https://www.curseforge.com/minecraft/mc-mods/rdpmouse).
 - **Встроенные сторонние компоненты:**
   - **GLFW:** [zlib/libpng License](https://www.glfw.org/license.html) (Copyright © Camilla Löwy, Marcus Geelnard & GLFW Contributors).
   - **LWJGL:** [BSD 3-Clause License](https://www.lwjgl.org/license) (Copyright © Lightweight Java Game Library).
