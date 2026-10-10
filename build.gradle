@@ -26,10 +26,6 @@ repositories {
     }
 }
 
-loom {
-    accessWidenerPath = file("src/main/resources/rdpmouse.accesswidener")
-}
-
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     if (project.hasProperty('yarn_mappings') && !project.property('yarn_mappings').toString().trim().isEmpty()) {
@@ -38,14 +34,6 @@ dependencies {
         mappings files("empty-mappings.jar")
     }
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    def fabricApi = project.findProperty('fabric_api_version') ?: project.findProperty('fabric_version')
-    if (fabricApi) {
-        modImplementation "net.fabricmc.fabric-api:fabric-api:${fabricApi}"
-    }
-
-    if (project.hasProperty('modmenu_version') && !project.property('modmenu_version').toString().trim().isEmpty()) {
-        modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
-    }
 }
 
 processResources {
