@@ -83,34 +83,6 @@ public final class RDPMouseClient implements ClientModInitializer {
     public static void applyMode(MinecraftClient mc, boolean enabled) {
         RDPMouseState.enabled = enabled;
         RDPMouseState.reset();
-
-        if (mc != null && mc.getWindow() != null) {
-            long window = mc.getWindow().getHandle();
-            if (mc.mouse.isCursorLocked() && window != 0L) {
-                if (enabled) {
-                    if (InputUtil.isRawMouseMotionSupported()) {
-                        GLFW.glfwSetInputMode(window, GLFW.GLFW_RAW_MOUSE_MOTION, GLFW.GLFW_FALSE);
-                    }
-                    GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_HIDDEN);
-                    RDPMouseCursor.applyCursor(window);
-                    RDPMouseCursor.clipCursor(window);
-
-                    int winW = mc.getWindow().getWidth();
-                    int winH = mc.getWindow().getHeight();
-                    if (winW > 0 && winH > 0) {
-                        RDPMouseState.justRecenter = true;
-                        GLFW.glfwSetCursorPos(window, winW / 2.0, winH / 2.0);
-                    }
-                } else {
-                    if (InputUtil.isRawMouseMotionSupported() && mc.options.getRawMouseInput().getValue()) {
-                        GLFW.glfwSetInputMode(window, GLFW.GLFW_RAW_MOUSE_MOTION, GLFW.GLFW_TRUE);
-                    }
-                    GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
-                    RDPMouseCursor.releaseCursor(window);
-                    RDPMouseCursor.releaseClip();
-                }
-            }
-        }
     }
 
     private static double panSpeed(int ticks) {
