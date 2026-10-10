@@ -1,6 +1,6 @@
 # Third-Party Notices and Licenses
 
-This project, **MrRdpFix ([MR] RDP Fix)**, is licensed under the [MIT License](LICENSE).
+This project, **MrTrueRdpFix ([MR] True RDP Fix)**, is licensed under the [MIT License](LICENSE).
 
 In order to resolve Minecraft remote input issues (MC-126875) over Windows Remote Desktop (RDP), this mod bundles official compiled native binaries of **GLFW 3.4+** distributed by the **LWJGL** project.
 
