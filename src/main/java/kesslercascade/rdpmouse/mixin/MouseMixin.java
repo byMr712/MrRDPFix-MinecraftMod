@@ -16,6 +16,11 @@ public abstract class MouseMixin {
 
     @Inject(method = "updateMouse", at = @At("HEAD"))
     private void rdpmouse$onUpdateMouse(double timeDelta, CallbackInfo ci) {
+        if (RDPMouseState.enabled && RDPMouseState.sensitivityMultiplier != 1.0) {
+            cursorDeltaX *= RDPMouseState.sensitivityMultiplier;
+            cursorDeltaY *= RDPMouseState.sensitivityMultiplier;
+        }
+
         if (RDPMouseState.panDX != 0 || RDPMouseState.panDY != 0) {
             cursorDeltaX += RDPMouseState.panDX;
             cursorDeltaY += RDPMouseState.panDY;
