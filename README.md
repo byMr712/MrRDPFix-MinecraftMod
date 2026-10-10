@@ -9,21 +9,27 @@
 ![Zero Config](https://img.shields.io/badge/Config-Zero%20Config-brightgreen.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Нативное исправление управления мышью при игре в **Minecraft 1.21.x (Fabric)** через **Windows Remote Desktop (RDP)**.
+Исправление управления мышью при игре в **Minecraft 1.21.x (Fabric)** через **Remote Desktop Protocol (RDP)**.
 
 Данный мод вдохновлён работой: [**RDPMouse от KesslerCascade**](https://www.curseforge.com/minecraft/mc-mods/rdpmouse)
 
-## О проблеме и решении
+## Галерея
+| Ванильная игра | Игра с моим модом |
+| :---: | :---: |
+| ![Full_vanilla](images/Full_vanilla.webp) | ![This_mod](images/This_mod.webp) |
 
+## О моде
 В Minecraft версий 1.13–1.21.x используется библиотека LWJGL 3.3.3 со старой версией GLFW 3.3, в которой присутствует баг некорректной обработки виртуального рабочего стола Windows ([MC-126875](https://bugs.mojang.com/browse/MC-126875), GLFW issue [#1276](https://github.com/glfw/glfw/issues/1276)). При подключении по RDP мышь отправляет флаг `MOUSE_VIRTUAL_DESKTOP`, из-за чего камера бесконтрольно улетает в небо либо намертво блокируется у границы экрана.
 
 Mojang решили эту проблему только в снапшотах 26.X, обновив GLFW до версии 3.4+.
 
+
+## Что умеет мод?
 **MrTrueRdpFix** выполняет чистый **нативный бэкпорт GLFW 3.4+** в Minecraft 1.21.x:
 1. При запуске игры мод автоматически подключает нативную библиотеку **GLFW 3.4+** (содержащую официальные исправления [PR #1279](https://github.com/glfw/glfw/pull/1279) и [PR #2431](https://github.com/glfw/glfw/pull/2431)) до инициализации окна игры.
 2. Ввод мыши обрабатывается аппаратно и нативно на уровне самой системы — без задержек, срывов курсора и сторонних Java-перехватов.
 
-## «Поставил и забыл» (Zero-Config)
+## «Поставил и забыл»
 
 Мод работает абсолютно бесшумно и прозрачно для игрока:
 - **Никаких лишних настроек и меню:** управление мышью сразу работает на 100% ванильно, плавно и на 360 градусов.
