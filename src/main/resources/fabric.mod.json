@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "rdpmouse",
-  "version": "${version}",
+  "id": "mrtruerdpfix",
+  "version": "1.0",
   "name": "[MR] True RDP Fix",
-  "icon": "assets/rdpmouse/icon.png",
+  "icon": "assets/mrtruerdpfix/icon.png",
   "description": "Fixes mouse look when playing over Remote Desktop Protocol (RDP)",
   "license": "MIT",
   "environment": "client",
