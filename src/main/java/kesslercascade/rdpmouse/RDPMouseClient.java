@@ -2,8 +2,6 @@ package kesslercascade.rdpmouse;
 
 import kesslercascade.rdpmouse.config.RDPMouseConfig;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
@@ -58,6 +56,15 @@ public final class RDPMouseClient implements ClientModInitializer {
             RDPMOUSE_CATEGORY
     );
 
+    public static final KeyBinding[] ALL_KEYS = new KeyBinding[] {
+            TOGGLE_KEY,
+            FREE_MOUSE_KEY,
+            PAN_LEFT,
+            PAN_RIGHT,
+            PAN_UP,
+            PAN_DOWN
+    };
+
     private boolean wasFreeMouse = false;
     private boolean releasedForFree = false;
 
@@ -69,13 +76,6 @@ public final class RDPMouseClient implements ClientModInitializer {
     public void onInitializeClient() {
         RDPMouse.init();
         RDPMouseConfig.load();
-        KeyBindingHelper.registerKeyBinding(TOGGLE_KEY);
-        KeyBindingHelper.registerKeyBinding(FREE_MOUSE_KEY);
-        KeyBindingHelper.registerKeyBinding(PAN_LEFT);
-        KeyBindingHelper.registerKeyBinding(PAN_RIGHT);
-        KeyBindingHelper.registerKeyBinding(PAN_UP);
-        KeyBindingHelper.registerKeyBinding(PAN_DOWN);
-        ClientTickEvents.END_CLIENT_TICK.register(this::onClientTick);
     }
 
     public static void applyMode(MinecraftClient mc, boolean enabled) {
