@@ -21,13 +21,13 @@ Mojang officially updated LWJGL/GLFW only in the 26.X snapshots.
 **MrTrueRdpFix** provides a clean **native backport of GLFW 3.4+** to Minecraft 1.21.x:
 1. On startup (before the game window is created), the mod transparently unpacks and directs LWJGL to a bundled **GLFW 3.4+** native library (incorporating [PR #1279](https://github.com/glfw/glfw/pull/1279) and [PR #2431](https://github.com/glfw/glfw/pull/2431)).
 2. Mouse input is processed natively and hardware-accelerated by GLFW — no fragile Java-level hacks, input latency, or cursor stutter.
-3. By default, the mod adds a **+50% sensitivity boost** on top of your current in-game sensitivity setting, ensuring a responsive camera feel over remote desktop. This extra boost can be freely adjusted (from 0% to 100%) in the mod settings via [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu).
+3. Features an optional mouse sensitivity boost (from 0% to +100%, default 0%). This is an add-on applied on top of normal in-game Minecraft sensitivity settings: if camera movement feels too sluggish over RDP, the multiplier can be customized in the mod settings via [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu).
 4. Provides additional quality-of-life features: smooth keyboard camera panning (arrow keys) and a hold-to-free cursor key (Alt).
 
 ## Controls
 
 - **Mouse:** Works smoothly with 360-degree rotation over RDP, identical to vanilla local gameplay.
-- **Sensitivity Boost:** Enabled by default (+50% boost over vanilla sensitivity), fully configurable in [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu).
+- **Sensitivity Boost:** Optional add-on (0% to +100%, default 0%) on top of normal Minecraft sensitivity settings (configured in [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu)).
 - **F8:** Toggle RDP mode on or off.
 - **Alt (hold):** Temporarily release cursor grab (Free Mouse).
 - **Arrow keys (Left / Right / Up / Down):** Smooth camera rotation from the keyboard.
@@ -38,7 +38,7 @@ All key bindings are configurable under *Options -> Controls -> Key Binds -> [MR
 
 The mod includes full [**Mod Menu**](https://www.curseforge.com/minecraft/mc-mods/modmenu) configuration:
 - Toggle RDP mode.
-- Mouse sensitivity boost slider (0% to 100%, default +50%).
+- Extra mouse sensitivity boost slider (applied on top of vanilla sensitivity from 0% to 100%, default 0%).
 
 ## Building
 
