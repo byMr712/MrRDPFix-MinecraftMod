@@ -4,7 +4,7 @@ public final class RDPMouseState {
     private RDPMouseState() {}
 
     public static volatile boolean enabled = true;
-    public static volatile double sensitivityMultiplier = 1.0;
+    public static volatile double sensitivityMultiplier = 1.5;
 
     /** Camera pan deltas injected by keyboard pan keys each tick. */
     public static volatile double panDX = 0;
