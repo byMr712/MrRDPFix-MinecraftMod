@@ -20,7 +20,7 @@ When playing Minecraft (versions 1.13 through 1.21.x) over Windows Remote Deskto
 - Windows RDP marks mouse packets with `MOUSE_VIRTUAL_DESKTOP` with absolute coordinates in `0..65535`.
 - Additionally, calling `SetCursor(NULL)` in GLFW 3.3 breaks cursor movement updates across the virtual boundary, trapping the mouse cursor at the physical monitor edge or causing runaway camera spinning into the sky.
 - This root cause is documented in Mojang bug **MC-126875** and GLFW issue **#1276**.
-- Mojang officially resolved this issue only starting in snapshot 26.X by updating GLFW to 3.4+.
+- Mojang officially resolved this issue only starting in snapshot 26.X.
 
 ## 3. How the Mod Works: Core Architecture
 MrTrueRdpFix performs a clean, native backport of **GLFW 3.4+** directly into Minecraft 1.21.x.
@@ -36,7 +36,7 @@ MrTrueRdpFix performs a clean, native backport of **GLFW 3.4+** directly into Mi
 
 ### 3.2 Zero-Config & Transparent ("Install & Forget")
 - The mod requires no configuration files, no config menus, and no custom keybindings.
-- No Mixins, no Access Wideners, and no background tick listeners are needed.
+- Does not modify Minecraft bytecode; uses RDPMouseMixinPlugin for early GLFW initialization before window creation.
 - Operates completely silently in the background with zero CPU overhead during gameplay.
 - **Zero Dependencies:** Does NOT require Fabric API, Mod Menu, or any other library. Works on bare Fabric Loader as well as any modpack.
 
@@ -57,4 +57,4 @@ MrTrueRdpFix performs a clean, native backport of **GLFW 3.4+** directly into Mi
   ```bash
   ./gradlew build
   ```
-- The built jar is copied to `build/libs/` and `C:/Users/Mr712/Documents/RDPMouse_all_builds/`.
+- The built jar is copied to `build/libs/` and `C:/Users/Mr712/Documents/MrTrueRdpFix_all_builds/` (subfolders `Fabric/` and `NeoForge/`).
