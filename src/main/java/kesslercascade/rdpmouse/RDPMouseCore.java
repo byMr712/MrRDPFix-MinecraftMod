@@ -10,7 +10,14 @@ import java.nio.file.StandardCopyOption;
 
 public class RDPMouseCore {
 
-    public static void init() {
+    private static volatile boolean initialized = false;
+
+    public static synchronized void init() {
+        if (initialized) {
+            return;
+        }
+        initialized = true;
+
         String os = System.getProperty("os.name", "").toLowerCase();
         if (!os.contains("win")) {
             return;
