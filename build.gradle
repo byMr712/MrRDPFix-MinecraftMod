@@ -116,15 +116,27 @@ task jarNeoForge(type: Jar) {
 
 build.dependsOn(jarNeoForge)
 
-def allBuildsDir = file("C:/Users/Mr712/Documents/RDPMouse_all_builds")
-tasks.register('copyToAllBuilds', Copy) {
-    dependsOn remapJar, jarNeoForge
+def allBuildsDir = file("C:/Users/Mr712/Documents/MrTrueRdpFix_all_builds")
+tasks.register('copyToAllBuildsFabric', Copy) {
+    dependsOn remapJar
     from remapJar.archiveFile
-    from jarNeoForge.archiveFile
-    into allBuildsDir
+    into file("${allBuildsDir}/Fabric")
     doLast {
-        println ">>> Copied ${remapJar.archiveFileName.get()} and ${jarNeoForge.archiveFileName.get()} to ${allBuildsDir.absolutePath}!"
+        println ">>> Copied ${remapJar.archiveFileName.get()} to ${allBuildsDir.absolutePath}/Fabric!"
     }
+}
+
+tasks.register('copyToAllBuildsNeoForge', Copy) {
+    dependsOn jarNeoForge
+    from jarNeoForge.archiveFile
+    into file("${allBuildsDir}/NeoForge")
+    doLast {
+        println ">>> Copied ${jarNeoForge.archiveFileName.get()} to ${allBuildsDir.absolutePath}/NeoForge!"
+    }
+}
+
+task copyToAllBuilds {
+    dependsOn copyToAllBuildsFabric, copyToAllBuildsNeoForge
 }
 
 build.finalizedBy(copyToAllBuilds)
