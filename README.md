@@ -56,6 +56,6 @@ Mojang решили эту проблему только в снапшотах 2
 - **[MR] True RDP Fix (MrTrueRdpFix):** [Репозиторий на GitHub](https://github.com/byMr712/MrTrueRdpFix-MinecraftMod), распространяется под лицензией [MIT License](LICENSE).  
   Авторы: [Mr712](https://github.com/byMr712), [KesslerCascade](https://github.com/KesslerCascade/RDPMouse).
 - **Встроенные сторонние компоненты:**
-  - **GLFW:** [zlib/libpng License](https://www.glfw.org/license.html) (Модифицировано Mr712 для поддержки горячего RDP-подключения) (Copyright © Camilla Löwy, Marcus Geelnard & GLFW Contributors).
+  - **GLFW:** [zlib/libpng License](https://www.glfw.org/license.html) (Модифицировано Mr712 для поддержки горячего RDP-подключения и устранения диагонального дрейфа мыши) (Copyright © Camilla Löwy, Marcus Geelnard & GLFW Contributors).
   - **LWJGL:** [BSD 3-Clause License](https://www.lwjgl.org/license) (Copyright © Lightweight Java Game Library).
   - Подробные тексты лицензий третьих сторон приведены в файле [NOTICE.md](NOTICE.md).
