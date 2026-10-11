@@ -55,6 +55,6 @@ Mojang resolved this issue only in the 26.X snapshots by upgrading GLFW to 3.4+.
 - **[MR] True RDP Fix (MrTrueRdpFix):** [GitHub Repository](https://github.com/byMr712/MrTrueRdpFix-MinecraftMod), licensed under the [MIT License](LICENSE).  
   Authors: [Mr712](https://github.com/byMr712), [KesslerCascade](https://github.com/KesslerCascade/RDPMouse).
 - **Bundled Third-Party Components:**
-  - **GLFW:** [zlib/libpng License](https://www.glfw.org/license.html) (Copyright © Camilla Löwy, Marcus Geelnard & GLFW Contributors). Modified by Mr712 for hot RDP connection support.
+  - **GLFW:** [zlib/libpng License](https://www.glfw.org/license.html) (Copyright © Camilla Löwy, Marcus Geelnard & GLFW Contributors). Modified by Mr712 for hot RDP connection support and diagonal mouse drift elimination.
   - **LWJGL:** [BSD 3-Clause License](https://www.lwjgl.org/license) (Copyright © Lightweight Java Game Library).
   - Full third-party license texts are documented in [NOTICE.md](NOTICE.md).
