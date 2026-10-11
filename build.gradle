@@ -70,13 +70,59 @@ remapJar {
     archiveFileName = "${project.archives_base_name}.jar"
 }
 
+sourceSets {
+    neoforge {
+        java {
+            srcDirs = ['src/neoforge/java']
+        }
+        resources {
+            srcDirs = ['src/neoforge/resources']
+        }
+        compileClasspath += sourceSets.main.output + configurations.compileClasspath
+        runtimeClasspath += sourceSets.main.output + configurations.runtimeClasspath
+    }
+}
+
+processNeoforgeResources {
+    inputs.property "version", project.version
+    inputs.property "minecraft_version", project.minecraft_version
+
+    filesMatching("META-INF/neoforge.mods.toml") {
+        expand "version": project.version, "minecraft_version": project.minecraft_version
+    }
+}
+
+task jarNeoForge(type: Jar) {
+    dependsOn compileNeoforgeJava, processNeoforgeResources
+    archiveFileName = "MrTrueRdpFix-NeoForge-${project.minecraft_version}-byMr712-v${project.version}.jar"
+    destinationDirectory = layout.buildDirectory.dir("libs")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from(sourceSets.main.output) {
+        exclude "kesslercascade/rdpmouse/RDPMousePreLaunch.class"
+        exclude "fabric.mod.json"
+    }
+    from(sourceSets.neoforge.output) {
+        exclude "net/neoforged/**"
+    }
+    from("src/main/resources") {
+        include "assets/**"
+        include "natives/**"
+    }
+    from("LICENSE")
+    from("NOTICE.md")
+}
+
+build.dependsOn(jarNeoForge)
+
 def allBuildsDir = file("C:/Users/Mr712/Documents/RDPMouse_all_builds")
 tasks.register('copyToAllBuilds', Copy) {
-    dependsOn remapJar
+    dependsOn remapJar, jarNeoForge
     from remapJar.archiveFile
+    from jarNeoForge.archiveFile
     into allBuildsDir
     doLast {
-        println ">>> Copied ${remapJar.archiveFileName.get()} to ${allBuildsDir.absolutePath}!"
+        println ">>> Copied ${remapJar.archiveFileName.get()} and ${jarNeoForge.archiveFileName.get()} to ${allBuildsDir.absolutePath}!"
     }
 }
 
