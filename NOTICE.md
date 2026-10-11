@@ -2,9 +2,7 @@
 
 This project, **MrTrueRdpFix ([MR] True RDP Fix)**, is licensed under the [MIT License](LICENSE).
 
-In order to resolve Minecraft remote input issues (MC-126875) over Windows Remote Desktop (RDP), this mod bundles official compiled native binaries of **GLFW 3.4+** distributed by the **LWJGL** project.
-
----
+In order to resolve Minecraft remote input issues (MC-126875) over Windows Remote Desktop (RDP), this mod bundles native binaries of **GLFW 3.4+** distributed by the **LWJGL** project with improvements by Mr712.
 
 ## 1. GLFW
 
@@ -13,6 +11,7 @@ In order to resolve Minecraft remote input issues (MC-126875) over Windows Remot
 * **Copyright:**
   * Copyright (c) 2002-2006 Marcus Geelnard
   * Copyright (c) 2006-2019 Camilla Löwy (`elmindreda@glfw.org`)
+* **Modifications:** The bundled GLFW binaries (x64, x86, ARM64) were altered by Mr712 to support seamless hot RDP connections. The one-time startup check (`SM_REMOTESESSION`) in `initRemoteSession()` was patched to ensure GLFW's transparent cursor (`blankCursor`) is unconditionally initialized at startup. This ensures `SetCursorPos` centering is never broken when connecting via Remote Desktop to an already running game session.
 
 ```
 This software is provided 'as-is', without any express or implied warranty.
@@ -31,9 +30,7 @@ subject to the following restrictions:
    misrepresented as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 ```
-
----
-
+ 
 ## 2. LWJGL — Lightweight Java Game Library
 
 * **Project:** LWJGL 3 (https://www.lwjgl.org)
