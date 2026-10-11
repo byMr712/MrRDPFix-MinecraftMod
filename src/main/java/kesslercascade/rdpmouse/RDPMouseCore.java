@@ -49,11 +49,42 @@ public class RDPMouseCore {
                 String absoluteDll = targetDll.toAbsolutePath().toString();
                 Configuration.GLFW_LIBRARY_NAME.set(absoluteDll);
                 System.setProperty("org.lwjgl.glfw.libname", absoluteDll);
-                System.out.println("[MR True RDP Fix] Backported GLFW 3.4+ native library loaded for RDP fix: " + absoluteDll);
+                log("[MR True RDP Fix] Backported GLFW 3.4+ native library loaded for RDP fix: " + absoluteDll);
+            }
+
+            // NeoForge compatibility: disable fmlearlywindow so it does not lock vanilla GLFW before mod injection
+            try {
+                Path configDir = Paths.get("config");
+                Path fmlConfig = configDir.resolve("fml.toml");
+                if (Files.exists(fmlConfig)) {
+                    String content = Files.readString(fmlConfig);
+                    if (content.contains("earlyWindowControl = true")) {
+                        content = content.replace("earlyWindowControl = true", "earlyWindowControl = false");
+                        Files.writeString(fmlConfig, content);
+                        log("[MR True RDP Fix] Disabled NeoForge earlyWindowControl in config/fml.toml for GLFW compatibility.");
+                    }
+                } else {
+                    if (!Files.exists(configDir)) {
+                        Files.createDirectories(configDir);
+                    }
+                    Files.writeString(fmlConfig, "earlyWindowControl = false\n");
+                    log("[MR True RDP Fix] Created config/fml.toml with earlyWindowControl = false for GLFW compatibility.");
+                }
+            } catch (Throwable ignored) {
             }
         } catch (Throwable t) {
             System.err.println("[MR True RDP Fix] Failed to inject GLFW 3.4+ native library:");
             t.printStackTrace();
+        }
+    }
+
+    private static void log(String message) {
+        System.out.println(message);
+        try {
+            Class<?> logUtils = Class.forName("com.mojang.logging.LogUtils");
+            org.slf4j.Logger logger = (org.slf4j.Logger) logUtils.getMethod("getLogger").invoke(null);
+            logger.info(message);
+        } catch (Throwable ignored) {
         }
     }
 }
