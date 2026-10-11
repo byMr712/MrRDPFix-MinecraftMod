@@ -38,15 +38,13 @@ public class RDPMousePreLaunch implements PreLaunchEntrypoint {
 
                 Path cacheDir = Paths.get(System.getProperty("java.io.tmpdir"), "mrrdpfix-natives", "windows", archDir);
                 Files.createDirectories(cacheDir);
-                Path targetDll = cacheDir.resolve("glfw-3.4.1.dll");
+                Path targetDll = cacheDir.resolve("glfw-3.4.2-rdpfix.dll");
 
-                if (!Files.exists(targetDll) || Files.size(targetDll) == 0) {
-                    try {
-                        Files.copy(in, targetDll, StandardCopyOption.REPLACE_EXISTING);
-                    } catch (Exception e) {
-                        if (!Files.exists(targetDll)) {
-                            throw e;
-                        }
+                try {
+                    Files.copy(in, targetDll, StandardCopyOption.REPLACE_EXISTING);
+                } catch (Exception e) {
+                    if (!Files.exists(targetDll)) {
+                        throw e;
                     }
                 }
 
