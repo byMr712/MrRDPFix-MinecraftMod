@@ -11,7 +11,9 @@ In order to resolve Minecraft remote input issues (MC-126875) over Windows Remot
 * **Copyright:**
   * Copyright (c) 2002-2006 Marcus Geelnard
   * Copyright (c) 2006-2019 Camilla Löwy (`elmindreda@glfw.org`)
-* **Modifications:** The bundled GLFW binaries (x64, x86, ARM64) were altered by Mr712 to support seamless hot RDP connections. The one-time startup check (`SM_REMOTESESSION`) in `initRemoteSession()` was patched to ensure GLFW's transparent cursor (`blankCursor`) is unconditionally initialized at startup. This ensures `SetCursorPos` centering is never broken when connecting via Remote Desktop to an already running game session.
+* **Modifications:** The bundled GLFW binaries (x64, x86, ARM64) were altered by Mr712:
+  1. **Hot RDP connection support:** The one-time startup check (`SM_REMOTESESSION`) in `initRemoteSession()` was patched to ensure GLFW's transparent cursor (`blankCursor`) is unconditionally initialized at startup. This ensures `SetCursorPos` centering is never broken when connecting via Remote Desktop to an already running game session.
+  2. **Raw input coordinate rounding (elimination of diagonal mouse drift):** In the Win32 `WM_INPUT` handler for absolute mouse motion (`MOUSE_MOVE_ABSOLUTE`), floating-point coordinate truncation (`cvttss2si` on x86/x64, `FCVTZS` on ARM64) was replaced with round-to-nearest (`cvtss2si` on x86/x64, `FCVTNS` on ARM64). This resolves a persistent subpixel quantization error (phantom $-1, -1$ delta toward top-left) upon cursor re-centering during slow diagonal mouse movements over RDP.
 
 ```
 This software is provided 'as-is', without any express or implied warranty.
