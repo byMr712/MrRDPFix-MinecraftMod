@@ -20,6 +20,9 @@
       "kesslercascade.rdpmouse.RDPMousePreLaunch"
     ]
   },
+  "mixins": [
+    "mrtruerdpfix.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.19.5",
     "minecraft": "${minecraft_version}",

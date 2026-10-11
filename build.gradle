@@ -108,6 +108,7 @@ task jarNeoForge(type: Jar) {
     from("src/main/resources") {
         include "assets/**"
         include "natives/**"
+        include "mrtruerdpfix.mixins.json"
     }
     from("LICENSE")
     from("NOTICE.md")
