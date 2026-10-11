@@ -20,16 +20,16 @@ This mod is inspired by the work of: [**RDPMouse by KesslerCascade**](https://ww
 ## The Problem
 Minecraft versions 1.13 through 1.21.x bundle LWJGL 3.3.3 with an older GLFW 3.3 build, which fails to handle Windows virtual desktop mouse input over RDP ([MC-126875](https://bugs.mojang.com/browse/MC-126875), GLFW issue [#1276](https://github.com/glfw/glfw/issues/1276)). Under RDP, Windows sets the MOUSE_VIRTUAL_DESKTOP flag, causing the camera to spin uncontrollably into the sky or get stuck at the edge of the monitor.
 
-Mojang resolved this issue only in the 26.X snapshots by upgrading GLFW to 3.4+.
+Mojang resolved this issue only in the 26.X snapshots.
 
 ## What Does the Mod Do?
-**[MR] True RDP Fix** (MrTrueRdpFix) provides a clean **native backport of GLFW 3.4+** to Minecraft 1.21.x:
+**[MR] True RDP Fix** provides a clean **native backport of GLFW 3.4+** to Minecraft 1.21.x:
 1. On startup (before the game window is created), the mod automatically links a native **GLFW 3.4+** library (incorporating official fixes from [PR #1279](https://github.com/glfw/glfw/pull/1279) and [PR #2431](https://github.com/glfw/glfw/pull/2431) with an additional hot RDP connection patch by Mr712) before the game window is initialized.
 2. Mouse input is processed natively and hardware-accelerated by GLFW — no input latency, cursor stutter, or fragile Java-level hacks.
 
 ## Compatibility
 - **Zero Breakage:** Does not affect shaders (Iris), optimization mods (Sodium), textures, or resource packs.
-- **Zero Mod Conflicts:** Does not modify Minecraft bytecode (works without Mixins), making conflicts with other mods impossible.
+- **Zero Mod Conflicts:** Does not modify Minecraft code, making conflicts with other mods impossible.
 - **Playable Without RDP:** No need to remove the mod from the mods folder when playing locally at your PC — input feels 100% like clean vanilla gameplay.
 
 ## Installation
@@ -42,14 +42,14 @@ Mojang resolved this issue only in the 26.X snapshots by upgrading GLFW to 3.4+.
 ## Building
 1. Requires Java 21 and Fabric Loader.
 2. Build via:
-   `cmd
+   ```cmd
    build.bat
-   `
-   или через Gradle:
-   `ash
+   ```
+   or via Gradle:
+   ```bash
    ./gradlew build
-   `
-3. The built JAR file will be in uild/libs/.
+   ```
+3. The built JAR file will be in `build/libs/`.
 
 ## Authors & Licenses
 - **[MR] True RDP Fix (MrTrueRdpFix):** [GitHub Repository](https://github.com/byMr712/MrTrueRdpFix-MinecraftMod), licensed under the [MIT License](LICENSE).  
