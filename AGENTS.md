@@ -7,9 +7,9 @@
 - **Version:** `1.0`
 - **Supported Minecraft Versions:** 1.21 through 1.21.11 (Branches: `1.21`, `1.21.1`, ..., `1.21.11`)
 - **Default Branch:** `1.21.11`
-- **Loader:** Pure Fabric Loader (>=0.19.5) — Zero Fabric API dependency
+- **Loaders:** Pure Fabric Loader (>=0.19.5) and NeoForge (>=21.0.0) — Zero extra dependencies
 - **Java Requirement:** Java 21 LTS
-- **Build Output Pattern:** `MrTrueRdpFix-Fabric-XXXX-byMr712-v1.0.jar`
+- **Build Output Patterns:** `MrTrueRdpFix-Fabric-XXXX-byMr712-v1.0.jar` and `MrTrueRdpFix-NeoForge-XXXX-byMr712-v1.0.jar`
 - **Repository:** https://github.com/byMr712/MrTrueRdpFix-MinecraftMod
 - **Original Mod:** [RDPMouse by KesslerCascade](https://github.com/KesslerCascade/RDPMouse)
 - **Authors:** Mr712 (Lead), KesslerCascade
