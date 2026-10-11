@@ -1,13 +1,14 @@
 > **Language:** [Русский](README.md) · English
 
-# [MR] True RDP Fix (Fabric 1.21.x)
+# [MR] True RDP Fix (Fabric / NeoForge 1.21.x)
 ### MrTrueRdpFix
 ![Java 21](https://img.shields.io/badge/Java-21-blue.svg)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.x-blue.svg)
 ![Fabric](https://img.shields.io/badge/Loader-Fabric-blue.svg)
+![NeoForge](https://img.shields.io/badge/Loader-NeoForge-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Fixes mouse look when playing **Minecraft 1.21.x (Fabric)** over **Remote Desktop Protocol (RDP)**.
+Fixes mouse look when playing **Minecraft 1.21.x (Fabric & NeoForge)** over **Remote Desktop Protocol (RDP)**.
 
 This mod is inspired by the work of: [**RDPMouse by KesslerCascade**](https://www.curseforge.com/minecraft/mc-mods/rdpmouse)
 
@@ -34,7 +35,7 @@ Mojang resolved this issue only in the 26.X snapshots by upgrading GLFW to 3.4+.
 ## Installation
 1. Download the latest version from [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mr-true-rdp-fix) or [GitHub Releases](https://github.com/byMr712/MrTrueRdpFix-MinecraftMod/releases).
 2. Requirements:
-   - Pure Fabric Loader only - other mods like Fabric API are not required.
+   - Pure Fabric Loader or NeoForge only — extra libraries (like Fabric API) are not required.
 3. Place the .jar file into your mods folder.
 4. Launch the game.
 

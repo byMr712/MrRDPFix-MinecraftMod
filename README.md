@@ -1,13 +1,14 @@
 > **Language:** Русский · [English](README.en.md)
 
-# [MR] True RDP Fix (Fabric 1.21.x)
+# [MR] True RDP Fix (Fabric / NeoForge 1.21.x)
 ### MrTrueRdpFix
 ![Java 21](https://img.shields.io/badge/Java-21-blue.svg)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.x-blue.svg)
 ![Fabric](https://img.shields.io/badge/Loader-Fabric-blue.svg)
+![NeoForge](https://img.shields.io/badge/Loader-NeoForge-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Исправление управления мышью при игре в **Minecraft 1.21.x (Fabric)** через **Remote Desktop Protocol (RDP)**.
+Исправление управления мышью при игре в **Minecraft 1.21.x (Fabric & NeoForge)** через **Remote Desktop Protocol (RDP)**.
 
 Данный мод вдохновлён работой: [**RDPMouse от KesslerCascade**](https://www.curseforge.com/minecraft/mc-mods/rdpmouse)
 
@@ -35,7 +36,7 @@ Mojang решили эту проблему только в снапшотах 2
 ## Установка
 1. Скачайте последнюю версию мода со страницы на [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mr-true-rdp-fix) или [GitHub Releases](https://github.com/byMr712/MrTrueRdpFix-MinecraftMod/releases).
 2. Требуются:
-   - Только ядро ​​Fabric - другие моды, такие как Fabric API, не требуются.
+   - Только ядро Fabric или NeoForge — другие моды (Fabric API и др.) не требуются.
 3. Поместите `.jar` файл в папку `mods`.
 4. Запустите игру.
 
