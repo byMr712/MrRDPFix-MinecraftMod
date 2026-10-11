@@ -11,6 +11,9 @@ authors="Mr712, KesslerCascade"
 description="Fixes mouse look when playing over Remote Desktop Protocol (RDP)"
 logoFile="assets/mrtruerdpfix/icon.png"
 
+[[mixins]]
+config="mrtruerdpfix.mixins.json"
+
 [[dependencies.mrtruerdpfix]]
 modId="neoforge"
 type="required"
