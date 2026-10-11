@@ -29,9 +29,9 @@ MrTrueRdpFix performs a clean, native backport of **GLFW 3.4+** directly into Mi
 - Implements `net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint`.
 - Before the Minecraft window, graphics context, or LWJGL classes are initialized:
   1. Detects OS architecture (`x64`, `arm64`, or `x86`).
-  2. Unpacks the bundled, precompiled native `glfw-3.4.1.dll` from `natives/windows/<arch>/glfw.dll` into the system temporary directory.
+  2. Unpacks the bundled, precompiled native `glfw-3.4.2-rdpfix.dll` from `natives/windows/<arch>/glfw.dll` into the system temporary directory.
   3. Directs LWJGL to use this modern GLFW build via `Configuration.GLFW_LIBRARY_NAME.set(...)` and `System.setProperty("org.lwjgl.glfw.libname", ...)`.
-- GLFW 3.4+ natively fixes Windows RDP mouse handling (via official patches PR #1279 and PR #2431) by utilizing an invisible 1x1 cursor and calculating proper virtual desktop coordinate deltas.
+- GLFW 3.4+ natively fixes Windows RDP mouse handling (via official patches PR #1279 and PR #2431). In addition, our native binaries are patched by Mr712 to unconditionally create the transparent blank cursor at startup, enabling seamless "hot" RDP connections to already-running Minecraft sessions without game restarts.
 - Mouse look runs 100% natively in hardware at the operating system level, with zero input lag, no cursor snaps, and full 360-degree rotation identical to local play.
 
 ### 3.2 Zero-Config & Transparent ("Install & Forget")
