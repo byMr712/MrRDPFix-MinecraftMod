@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+issueTrackerURL="https://github.com/byMr712/MrTrueRdpFix-MinecraftMod/issues"
+
+[[mods]]
+modId="mrtruerdpfix"
+version="${version}"
+displayName="[MR] True RDP Fix"
+authors="Mr712, KesslerCascade"
+description="Fixes mouse look when playing over Remote Desktop Protocol (RDP)"
+logoFile="assets/mrtruerdpfix/icon.png"
+
+[[dependencies.mrtruerdpfix]]
+modId="neoforge"
+type="required"
+versionRange="[21.0.0,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.mrtruerdpfix]]
+modId="minecraft"
+type="required"
+versionRange="[${minecraft_version}]"
+ordering="NONE"
+side="CLIENT"
