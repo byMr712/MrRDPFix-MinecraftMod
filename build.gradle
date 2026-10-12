@@ -36,12 +36,14 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 }
 
+def cleanVersion = project.version.toString().startsWith('v') ? project.version.toString().substring(1) : project.version.toString()
+
 processResources {
-    inputs.property "version", project.version
+    inputs.property "version", cleanVersion
     inputs.property "minecraft_version", project.minecraft_version
 
     filesMatching("fabric.mod.json") {
-        expand "version": project.version, "minecraft_version": project.minecraft_version
+        expand "version": cleanVersion, "minecraft_version": project.minecraft_version
     }
 }
 
@@ -84,17 +86,17 @@ sourceSets {
 }
 
 processNeoforgeResources {
-    inputs.property "version", project.version
+    inputs.property "version", cleanVersion
     inputs.property "minecraft_version", project.minecraft_version
 
     filesMatching("META-INF/neoforge.mods.toml") {
-        expand "version": project.version, "minecraft_version": project.minecraft_version
+        expand "version": cleanVersion, "minecraft_version": project.minecraft_version
     }
 }
 
 task jarNeoForge(type: Jar) {
     dependsOn compileNeoforgeJava, processNeoforgeResources
-    archiveFileName = "MrTrueRdpFix-NeoForge-${project.minecraft_version}-byMr712-v${project.version}.jar"
+    archiveFileName = "MrTrueRdpFix-NeoForge-${project.minecraft_version}-byMr712-v${cleanVersion}.jar"
     destinationDirectory = layout.buildDirectory.dir("libs")
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
