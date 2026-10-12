@@ -33,7 +33,7 @@ Mojang resolved this issue only in the 26.X snapshots.
 - **Playable Without RDP:** No need to remove the mod from the mods folder when playing locally at your PC — input feels 100% like clean vanilla gameplay.
 
 ## Installation
-1. Download the latest version from [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mr-true-rdp-fix) or [GitHub Releases](https://github.com/byMr712/MrTrueRdpFix-MinecraftMod/releases).
+1. Download the required version of the mod from the [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mr-true-rdp-fix) or [GitHub Releases](https://github.com/byMr712/MrTrueRdpFix-MinecraftMod/releases) page.
 2. Requirements:
    - Pure Fabric Loader or NeoForge only — extra libraries (like Fabric API) are not required.
 3. Place the .jar file into your mods folder.
