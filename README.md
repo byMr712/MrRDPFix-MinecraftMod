@@ -34,7 +34,7 @@ Mojang решили эту проблему только в снапшотах 2
 - **Можно играть и без RDP:** мод не нужно вынимать из папки `mods` при обычной игре за своим компьютером — управление ощущается на 100% как в чистой ванильной игре.
 
 ## Установка
-1. Скачайте последнюю версию мода со страницы на [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mr-true-rdp-fix) или [GitHub Releases](https://github.com/byMr712/MrTrueRdpFix-MinecraftMod/releases).
+1. Скачайте нужную версию мода со страницы на [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mr-true-rdp-fix) или [GitHub Releases](https://github.com/byMr712/MrTrueRdpFix-MinecraftMod/releases).
 2. Требуются:
    - Только ядро Fabric или NeoForge — другие моды (Fabric API и др.) не требуются.
 3. Поместите `.jar` файл в папку `mods`.
