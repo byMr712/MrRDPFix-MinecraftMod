@@ -78,6 +78,9 @@ Supporting both Fabric and NeoForge without external dependencies required solvi
    - `src/neoforge/` contains `RDPMouseNeoForge` with `@Mod("mrtruerdpfix")` and a compile-time `@Mod` stub to allow building via Fabric Loom without full NeoGradle overhead.
    - `jarNeoForge` task generates a pure NeoForge JAR with `META-INF/neoforge.mods.toml`, excluding Fabric entrypoints.
    - `remapJar` produces the pure Fabric JAR with `fabric.mod.json`, excluding NeoForge metadata.
+5. **Version Format (`X.X` without `v` inside Mod Metadata):**
+   - In `gradle.properties`, `mod_version` is formatted as `X.X` (e.g., `1.1`), and `build.gradle` explicitly strips any leading `v` (`cleanVersion`) when expanding `${version}` into `fabric.mod.json` and `META-INF/neoforge.mods.toml` (complying with Maven/SemVer `ArtifactVersion` requirements in NeoForge and keeping Fabric consistent).
+   - Only the external `.jar` artifact filenames retain the `-vX.X.jar` suffix.
 
 ---
 
@@ -120,6 +123,6 @@ MrTrueRdpFix-MinecraftMod/
   ```cmd
   gradlew.bat clean build
   ```
-  Produces both Fabric and NeoForge JARs in `build/libs/` and automatically copies them to `C:\Users\Mr712\Documents\RDPMouse_all_builds\`.
+  Produces both Fabric and NeoForge JARs in `build/libs/` and automatically copies them to `C:\Users\Mr712\Documents\MrTrueRdpFix_all_builds\` (`Fabric/` and `NeoForge/`).
 - **Cross-Branch Synchronization:**
   All 12 branches (`1.21` to `1.21.11`) share the exact same native binaries, Mixin plugin architecture, and NeoForge multi-loader structure, varying only by Minecraft version dependencies in `gradle.properties`.
